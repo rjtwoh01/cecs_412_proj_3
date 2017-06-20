@@ -4,6 +4,8 @@
 #include <conf_usart_example.h>
 #include "led.h"
 
+int getCharacter(int input);
+
 const int Characters[][] = {
 	0x7E, 0x09, 0x09, 0x09, 0x7E, 0x00,  //A
 	0x7F, 0x49, 0x49, 0x36, 0x00, 0x00,  //B
@@ -78,6 +80,7 @@ int main(void)
 
 	uint8_t tx_buf[] = "\n\rEnter a message: ";
 	int tx_length = 21;
+	int i;
 	for (i = 0; i < tx_length; i++) {
 		usart_putchar(USART_SERIAL_EXAMPLE, tx_buf[i]);
 	}
@@ -86,4 +89,8 @@ int main(void)
 	while (true) {
 		input = usart_getchar(USART_SERIAL_EXAMPLE);
 	}
+}
+
+int getCharacter(int input) {
+	//Do Stuff
 }
