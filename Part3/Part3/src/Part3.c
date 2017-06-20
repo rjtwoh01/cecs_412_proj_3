@@ -1,6 +1,7 @@
 #include <board.h>
 #include <sysclk.h>
 #include <st7565r.h>
+#include <conf_usart_example.h>
 #include "led.h"
 
 const int Characters[][] = {
@@ -121,20 +122,82 @@ int main(void)
 	st7565r_set_page_address(0);
 	st7565r_set_column_address(0);
 
-	// fill display with lines
-	for (page_address = 0; page_address <= 4; page_address++) {
-		st7565r_set_page_address(page_address);
-		for (column_address = 0; column_address < 128; column_address++) {
-			st7565r_set_column_address(column_address);
-			/* fill every other pixel in the display. This will produce
-			horizontal lines on the display. */
-			st7565r_write_data(0xAA);
-		}
+	uint8_t tx_buf[] = "\n\rWhat would you like to add ? (1-9) : ";
+	uint8_t tx_length = 37;
+	uint8_t received_byte;
+	
+	uint8_t i;
+	
+	uint8_t num1,num2,num3,num4,out,out1;
+	
+	
+	
+	/* Initialize the board.
+	* The board-specific conf_board.h file contains the configuration of
+	* the board initialization.
+	*/
+	board_init();
+	sysclk_init();
+	
+	// USART options.
+	static usart_rs232_options_t USART_SERIAL_OPTIONS = {
+		.baudrate = USART_SERIAL_EXAMPLE_BAUDRATE,
+		.charlength = USART_SERIAL_CHAR_LENGTH,
+		.paritytype = USART_SERIAL_PARITY,
+		.stopbits = USART_SERIAL_STOP_BIT
+	};
+	
+	// Initialize usart driver in RS232 mode
+	usart_init_rs232(USART_SERIAL_EXAMPLE, &USART_SERIAL_OPTIONS);
+	
+	// Send "message header"
+	for (i = 0; i < tx_length; i++) {
+		usart_putchar(USART_SERIAL_EXAMPLE, tx_buf[i]);
 	}
-
-	// scroll the display using hardware support in the LCD controller
-	while (true) {
-		st7565r_set_display_start_line_address(start_line_address++);
-		delay_ms(250);
+	
+	// Get and echo a character forever, specific '\r' processing.
+	while (true)
+	{
+		received_byte = usart_getchar(USART_SERIAL_EXAMPLE);
+		if (received_byte == '\r') {
+			for (i = 0; i < tx_length; i++) {
+				usart_putchar(USART_SERIAL_EXAMPLE, tx_buf[i]);
+			}
+		}
+		else
+		{
+			
+			
+			num1=usart_getchar(USART_SERIAL_EXAMPLE);
+			usart_putchar(USART_SERIAL_EXAMPLE,num1);
+			usart_putchar(USART_SERIAL_EXAMPLE, '+' );
+			num2=usart_getchar(USART_SERIAL_EXAMPLE);
+			usart_putchar(USART_SERIAL_EXAMPLE,num2);
+			usart_putchar(USART_SERIAL_EXAMPLE, '=');
+			
+			num3=num1-48;
+			num4=num2-48;
+			out=num3+num4;
+			out1=out+48;
+			
+			if(out>=48 ||out<=57){
+				
+				usart_putchar(USART_SERIAL_EXAMPLE, out1);
+			usart_putchar(USART_SERIAL_EXAMPLE, '\r');       }
+			
+			else if (out<48){
+				usart_putchar(USART_SERIAL_EXAMPLE, '!' );
+				
+			}
+			
+			else
+			{
+				
+				out1=out+48;
+				usart_putchar(USART_SERIAL_EXAMPLE, out1);
+				usart_putchar(USART_SERIAL_EXAMPLE, '\r');
+			}
+		}
+		
 	}
 }
