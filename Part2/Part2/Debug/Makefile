@@ -78,7 +78,7 @@ C_SRCS +=  \
 ../src/ASF/xmega/boards/xmega_a3bu_xplained/init.c \
 ../src/ASF/xmega/drivers/nvm/nvm.c \
 ../src/ASF/xmega/drivers/usart/usart.c \
-../src/st7565r_example.c
+../src/Part2.c
 
 
 PREPROCESSING_SRCS +=  \
@@ -99,7 +99,7 @@ src/ASF/xmega/drivers/cpu/ccp.o \
 src/ASF/xmega/drivers/nvm/nvm.o \
 src/ASF/xmega/drivers/nvm/nvm_asm.o \
 src/ASF/xmega/drivers/usart/usart.o \
-src/st7565r_example.o
+src/Part2.o
 
 OBJS_AS_ARGS +=  \
 src/ASF/common/components/display/st7565r/st7565r.o \
@@ -111,7 +111,7 @@ src/ASF/xmega/drivers/cpu/ccp.o \
 src/ASF/xmega/drivers/nvm/nvm.o \
 src/ASF/xmega/drivers/nvm/nvm_asm.o \
 src/ASF/xmega/drivers/usart/usart.o \
-src/st7565r_example.o
+src/Part2.o
 
 C_DEPS +=  \
 src/ASF/common/components/display/st7565r/st7565r.d \
@@ -123,7 +123,7 @@ src/ASF/xmega/drivers/cpu/ccp.d \
 src/ASF/xmega/drivers/nvm/nvm.d \
 src/ASF/xmega/drivers/nvm/nvm_asm.d \
 src/ASF/xmega/drivers/usart/usart.d \
-src/st7565r_example.d
+src/Part2.d
 
 C_DEPS_AS_ARGS +=  \
 src/ASF/common/components/display/st7565r/st7565r.d \
@@ -135,7 +135,7 @@ src/ASF/xmega/drivers/cpu/ccp.d \
 src/ASF/xmega/drivers/nvm/nvm.d \
 src/ASF/xmega/drivers/nvm/nvm_asm.d \
 src/ASF/xmega/drivers/usart/usart.d \
-src/st7565r_example.d
+src/Part2.d
 
 OUTPUT_FILE_PATH +=Part2.elf
 
