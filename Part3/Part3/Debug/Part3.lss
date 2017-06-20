@@ -3,33 +3,33 @@ Part3.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00001618  00000000  00000000  00000094  2**1
+  0 .text         00001896  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         000001d8  00802000  00001618  000016ac  2**0
+  1 .data         000001d8  00802000  00001896  0000192a  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000003  008021d8  008021d8  00001884  2**0
+  2 .bss          00000003  008021d8  008021d8  00001b02  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  00001884  2**0
+  3 .comment      00000030  00000000  00000000  00001b02  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 00000044  00000000  00000000  000018b4  2**2
+  4 .note.gnu.avr.deviceinfo 00000044  00000000  00000000  00001b34  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 000001a8  00000000  00000000  000018f8  2**3
+  5 .debug_aranges 000001a8  00000000  00000000  00001b78  2**3
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   0000abe2  00000000  00000000  00001aa0  2**0
+  6 .debug_info   0000b82f  00000000  00000000  00001d20  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00004209  00000000  00000000  0000c682  2**0
+  7 .debug_abbrev 00004230  00000000  00000000  0000d54f  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00004079  00000000  00000000  0001088b  2**0
+  8 .debug_line   00004377  00000000  00000000  0001177f  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000414  00000000  00000000  00014904  2**2
+  9 .debug_frame  00000414  00000000  00000000  00015af8  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0002efb7  00000000  00000000  00014d18  2**0
+ 10 .debug_str    0002efb7  00000000  00000000  00015f0c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00002b81  00000000  00000000  00043ccf  2**0
+ 11 .debug_loc    00003281  00000000  00000000  00044ec3  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000210  00000000  00000000  00046850  2**0
+ 12 .debug_ranges 00000288  00000000  00000000  00048144  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_macro  0000ab9b  00000000  00000000  00046a60  2**0
+ 13 .debug_macro  0000ab9b  00000000  00000000  000483cc  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -363,8 +363,8 @@ Disassembly of section .text:
      282:	11 e2       	ldi	r17, 0x21	; 33
      284:	a0 e0       	ldi	r26, 0x00	; 0
      286:	b0 e2       	ldi	r27, 0x20	; 32
-     288:	e8 e1       	ldi	r30, 0x18	; 24
-     28a:	f6 e1       	ldi	r31, 0x16	; 22
+     288:	e6 e9       	ldi	r30, 0x96	; 150
+     28a:	f8 e1       	ldi	r31, 0x18	; 24
      28c:	00 e0       	ldi	r16, 0x00	; 0
      28e:	0b bf       	out	0x3b, r16	; 59
      290:	02 c0       	rjmp	.+4      	; 0x296 <__do_copy_data+0x14>
@@ -387,8 +387,8 @@ Disassembly of section .text:
      2a6:	ab 3d       	cpi	r26, 0xDB	; 219
      2a8:	b2 07       	cpc	r27, r18
      2aa:	e1 f7       	brne	.-8      	; 0x2a4 <.do_clear_bss_loop>
-     2ac:	0e 94 a7 0a 	call	0x154e	; 0x154e <main>
-     2b0:	0c 94 0a 0b 	jmp	0x1614	; 0x1614 <_exit>
+     2ac:	0e 94 46 0b 	call	0x168c	; 0x168c <main>
+     2b0:	0c 94 49 0c 	jmp	0x1892	; 0x1892 <_exit>
 
 000002b4 <__bad_interrupt>:
      2b4:	a5 ce       	rjmp	.-694    	; 0x0 <__vectors>
@@ -2149,7 +2149,7 @@ bool usart_set_baudrate(USART_t *usart, uint32_t baud, uint32_t cpu_hz)
      99c:	b2 01       	movw	r22, r4
      99e:	a5 01       	movw	r20, r10
      9a0:	94 01       	movw	r18, r8
-     9a2:	0e d6       	rcall	.+3100   	; 0x15c0 <__udivmodsi4>
+     9a2:	4d d7       	rcall	.+3738   	; 0x183e <__udivmodsi4>
 
 	for (exp = -7; exp < 7; exp++) {
 		if (ratio < limit) {
@@ -2262,7 +2262,7 @@ bool usart_set_baudrate(USART_t *usart, uint32_t baud, uint32_t cpu_hz)
      a3a:	97 1d       	adc	r25, r7
      a3c:	a5 01       	movw	r20, r10
      a3e:	94 01       	movw	r18, r8
-     a40:	bf d5       	rcall	.+2942   	; 0x15c0 <__udivmodsi4>
+     a40:	fe d6       	rcall	.+3580   	; 0x183e <__udivmodsi4>
      a42:	35 c0       	rjmp	.+106    	; 0xaae <usart_set_baudrate+0x1be>
 		} else {
 			baud <<= exp + 3;
@@ -2290,7 +2290,7 @@ bool usart_set_baudrate(USART_t *usart, uint32_t baud, uint32_t cpu_hz)
      a6c:	75 1d       	adc	r23, r5
      a6e:	86 1d       	adc	r24, r6
      a70:	97 1d       	adc	r25, r7
-     a72:	a6 d5       	rcall	.+2892   	; 0x15c0 <__udivmodsi4>
+     a72:	e5 d6       	rcall	.+3530   	; 0x183e <__udivmodsi4>
      a74:	1c c0       	rjmp	.+56     	; 0xaae <usart_set_baudrate+0x1be>
 		}
 	} else {
@@ -2322,7 +2322,7 @@ bool usart_set_baudrate(USART_t *usart, uint32_t baud, uint32_t cpu_hz)
      a9e:	75 1d       	adc	r23, r5
      aa0:	86 1d       	adc	r24, r6
      aa2:	97 1d       	adc	r25, r7
-     aa4:	8d d5       	rcall	.+2842   	; 0x15c0 <__udivmodsi4>
+     aa4:	cc d6       	rcall	.+3480   	; 0x183e <__udivmodsi4>
      aa6:	21 50       	subi	r18, 0x01	; 1
      aa8:	31 09       	sbc	r19, r1
      aaa:	41 09       	sbc	r20, r1
@@ -2931,7 +2931,7 @@ void usart_spi_set_baudrate(USART_t *usart, uint32_t baud, uint32_t cpu_hz)
      d66:	b8 01       	movw	r22, r16
      d68:	a7 01       	movw	r20, r14
      d6a:	96 01       	movw	r18, r12
-     d6c:	29 d4       	rcall	.+2130   	; 0x15c0 <__udivmodsi4>
+     d6c:	68 d5       	rcall	.+2768   	; 0x183e <__udivmodsi4>
      d6e:	21 50       	subi	r18, 0x01	; 1
      d70:	31 09       	sbc	r19, r1
      d72:	02 c0       	rjmp	.+4      	; 0xd78 <usart_spi_set_baudrate+0x48>
@@ -4036,7 +4036,7 @@ int getCharacter(int input) {
     120c:	e2 50       	subi	r30, 0x02	; 2
     120e:	ff 4f       	sbci	r31, 0xFF	; 255
     1210:	8f 4f       	sbci	r24, 0xFF	; 255
-    1212:	f8 c1       	rjmp	.+1008   	; 0x1604 <__tablejump2__>
+    1212:	37 c3       	rjmp	.+1646   	; 0x1882 <__tablejump2__>
 		//int x;
 		case 'A':
 		x = 0;
@@ -4333,7 +4333,7 @@ void displayCharacter(uint8_t character)
 	if (character == 37) {
     133a:	15 32       	cpi	r17, 0x25	; 37
     133c:	09 f0       	breq	.+2      	; 0x1340 <displayCharacter+0x30>
-    133e:	c7 c0       	rjmp	.+398    	; 0x14ce <displayCharacter+0x1be>
+    133e:	92 c1       	rjmp	.+804    	; 0x1664 <displayCharacter+0x354>
 		start_line_address += 7;
     1340:	80 91 d8 21 	lds	r24, 0x21D8	; 0x8021d8 <__data_end>
 		st7565r_set_display_start_line_address(start_line_address++);
@@ -4695,367 +4695,1166 @@ static inline uint8_t usart_get(USART_t * usart)
     1470:	80 ea       	ldi	r24, 0xA0	; 160
     1472:	99 e0       	ldi	r25, 0x09	; 9
     1474:	c4 d9       	rcall	.-3192   	; 0x7fe <usart_spi_deselect_device>
-	}
 
 	int i;
 	for (i = 0; i < 6; i++)
 	{
-		st7565r_write_data(Characters[character][i]);
-    1476:	2b c0       	rjmp	.+86     	; 0x14ce <displayCharacter+0x1be>
-    1478:	f7 01       	movw	r30, r14
-    147a:	80 80       	ld	r8, Z
-    147c:	f2 e0       	ldi	r31, 0x02	; 2
- * \param data the data to write
+		if (character == 100) {
+			start_line_address += 7;
+    1476:	9c c0       	rjmp	.+312    	; 0x15b0 <displayCharacter+0x2a0>
+    1478:	80 91 d8 21 	lds	r24, 0x21D8	; 0x8021d8 <__data_end>
+			st7565r_set_display_start_line_address(start_line_address++);
+    147c:	98 e0       	ldi	r25, 0x08	; 8
+    147e:	98 0f       	add	r25, r24
+    1480:	90 93 d8 21 	sts	0x21D8, r25	; 0x8021d8 <__data_end>
  */
-static inline void st7565r_write_data(uint8_t data)
+static inline void st7565r_set_display_start_line_address(uint8_t address)
+{
+	// Make sure address is 6 bits
+	address &= 0x3F;
+	st7565r_write_command(ST7565R_CMD_START_LINE_SET(address));
+    1484:	17 e0       	ldi	r17, 0x07	; 7
+    1486:	18 0f       	add	r17, r24
+ * \param command the command to write
+ */
+static inline void st7565r_write_command(uint8_t command)
 {
 #if defined(ST7565R_USART_SPI_INTERFACE)
 	struct usart_spi_device device = {.id = ST7565R_CS_PIN};
-    147e:	ef 0e       	add	r14, r31
+    1488:	1f 73       	andi	r17, 0x3F	; 63
+    148a:	10 64       	ori	r17, 0x40	; 64
 	usart_spi_select_device(ST7565R_USART_SPI, &device);
-    1480:	f1 1c       	adc	r15, r1
-    1482:	69 82       	std	Y+1, r6	; 0x01
-    1484:	be 01       	movw	r22, r28
-    1486:	6f 5f       	subi	r22, 0xFF	; 255
-    1488:	7f 4f       	sbci	r23, 0xFF	; 255
-    148a:	c8 01       	movw	r24, r16
-		bool level)
-{
-	PORT_t *base = arch_ioport_pin_to_base(pin);
-
-	if (level) {
-		base->OUTSET = arch_ioport_pin_to_mask(pin);
-    148c:	a2 d9       	rcall	.-3260   	; 0x7d2 <usart_spi_select_device>
-    148e:	f5 01       	movw	r30, r10
+    148c:	8b e2       	ldi	r24, 0x2B	; 43
+    148e:	89 83       	std	Y+1, r24	; 0x01
+    1490:	be 01       	movw	r22, r28
+    1492:	6f 5f       	subi	r22, 0xFF	; 255
+    1494:	7f 4f       	sbci	r23, 0xFF	; 255
+    1496:	80 ea       	ldi	r24, 0xA0	; 160
+    1498:	99 e0       	ldi	r25, 0x09	; 9
+    149a:	9b d9       	rcall	.-3274   	; 0x7d2 <usart_spi_select_device>
+    149c:	81 e0       	ldi	r24, 0x01	; 1
+    149e:	80 93 66 06 	sts	0x0666, r24	; 0x800666 <__TEXT_REGION_LENGTH__+0x700666>
  *
  * \param usart The USART module.
  */
 static inline bool usart_data_register_is_empty(USART_t * usart)
 {
 	return (usart)->STATUS & USART_DREIF_bm;
-    1490:	95 82       	std	Z+5, r9	; 0x05
-    1492:	f8 01       	movw	r30, r16
+    14a2:	e0 ea       	ldi	r30, 0xA0	; 160
+    14a4:	f9 e0       	ldi	r31, 0x09	; 9
  * \return The received data
  */
 static inline uint8_t usart_spi_transmit(USART_t * usart,
 		uint8_t txdata)
 {
 	while (usart_data_register_is_empty(usart) == false);
-    1494:	81 81       	ldd	r24, Z+1	; 0x01
-    1496:	85 ff       	sbrs	r24, 5
+    14a6:	81 81       	ldd	r24, Z+1	; 0x01
+    14a8:	85 ff       	sbrs	r24, 5
  * \param usart The USART module.
  * \param txdata The data to be transmitted.
  */
 static inline void usart_put(USART_t * usart, uint8_t txdata)
 {
 	(usart)->DATA = txdata;
-    1498:	fc cf       	rjmp	.-8      	; 0x1492 <displayCharacter+0x182>
+    14aa:	fd cf       	rjmp	.-6      	; 0x14a6 <displayCharacter+0x196>
+    14ac:	10 93 a0 09 	sts	0x09A0, r17	; 0x8009a0 <__TEXT_REGION_LENGTH__+0x7009a0>
  *
  * \param usart The USART module.
  */
 static inline bool usart_tx_is_complete(USART_t * usart)
 {
 	return (usart)->STATUS & USART_TXCIF_bm;
-    149a:	80 82       	st	Z, r8
-    149c:	f8 01       	movw	r30, r16
+    14b0:	e0 ea       	ldi	r30, 0xA0	; 160
+    14b2:	f9 e0       	ldi	r31, 0x09	; 9
 static inline uint8_t usart_spi_transmit(USART_t * usart,
 		uint8_t txdata)
 {
 	while (usart_data_register_is_empty(usart) == false);
 	usart_put(usart, txdata);
 	while (!usart_tx_is_complete(usart));
-    149e:	81 81       	ldd	r24, Z+1	; 0x01
+    14b4:	81 81       	ldd	r24, Z+1	; 0x01
+    14b6:	86 ff       	sbrs	r24, 6
  *
  * \param usart The USART module.
  */
 static inline void usart_clear_tx_complete(USART_t * usart)
 {
 	(usart)->STATUS = USART_TXCIF_bm;
-    14a0:	86 ff       	sbrs	r24, 6
+    14b8:	fd cf       	rjmp	.-6      	; 0x14b4 <displayCharacter+0x1a4>
+    14ba:	e0 ea       	ldi	r30, 0xA0	; 160
+    14bc:	f9 e0       	ldi	r31, 0x09	; 9
  *
  * \return The received data
  */
 static inline uint8_t usart_get(USART_t * usart)
 {
 	return (usart)->DATA;
-    14a2:	fc cf       	rjmp	.-8      	; 0x149c <displayCharacter+0x18c>
-	} else {
-		base->OUTCLR = arch_ioport_pin_to_mask(pin);
-    14a4:	71 82       	std	Z+1, r7	; 0x01
-    14a6:	80 81       	ld	r24, Z
-	ioport_set_pin_high(ST7565R_A0_PIN);
-	usart_spi_transmit(ST7565R_USART_SPI, data);
+    14be:	80 e4       	ldi	r24, 0x40	; 64
 	ioport_set_pin_low(ST7565R_A0_PIN);
+	usart_spi_transmit(ST7565R_USART_SPI, command);
 	usart_spi_deselect_device(ST7565R_USART_SPI, &device);
-    14a8:	f5 01       	movw	r30, r10
-    14aa:	96 82       	std	Z+6, r9	; 0x06
-    14ac:	be 01       	movw	r22, r28
-    14ae:	6f 5f       	subi	r22, 0xFF	; 255
-    14b0:	7f 4f       	sbci	r23, 0xFF	; 255
-		st7565r_set_column_address(0);
-		st7565r_set_page_address(++page_address);
-	}
-
-	int i;
-	for (i = 0; i < 6; i++)
-    14b2:	c8 01       	movw	r24, r16
-    14b4:	a4 d9       	rcall	.-3256   	; 0x7fe <usart_spi_deselect_device>
-    14b6:	ec 14       	cp	r14, r12
-	{
-		st7565r_write_data(Characters[character][i]);
-	}
-	delay_ms(100);
-    14b8:	fd 04       	cpc	r15, r13
-    14ba:	f1 f6       	brne	.-68     	; 0x1478 <displayCharacter+0x168>
-    14bc:	66 ed       	ldi	r22, 0xD6	; 214
-    14be:	78 e0       	ldi	r23, 0x08	; 8
-    14c0:	82 e0       	ldi	r24, 0x02	; 2
-    14c2:	90 e0       	ldi	r25, 0x00	; 0
-		bool level)
-{
-	PORT_t *base = arch_ioport_pin_to_base(pin);
-
-	if (level) {
-		base->OUTSET = arch_ioport_pin_to_mask(pin);
-    14c4:	4a de       	rcall	.-876    	; 0x115a <__portable_avr_delay_cycles>
-    14c6:	80 e1       	ldi	r24, 0x10	; 16
-    14c8:	80 93 85 06 	sts	0x0685, r24	; 0x800685 <__TEXT_REGION_LENGTH__+0x700685>
-	gpio_set_pin_high(NHD_C12832A1Z_BACKLIGHT); //turns backlight on
-    14cc:	30 c0       	rjmp	.+96     	; 0x152e <displayCharacter+0x21e>
-    14ce:	81 2f       	mov	r24, r17
-    14d0:	90 e0       	ldi	r25, 0x00	; 0
-    14d2:	7c 01       	movw	r14, r24
-    14d4:	ee 0c       	add	r14, r14
-    14d6:	ff 1c       	adc	r15, r15
-    14d8:	e8 0e       	add	r14, r24
-    14da:	f9 1e       	adc	r15, r25
-    14dc:	97 01       	movw	r18, r14
-    14de:	22 0f       	add	r18, r18
-    14e0:	33 1f       	adc	r19, r19
-    14e2:	22 0f       	add	r18, r18
-    14e4:	33 1f       	adc	r19, r19
-    14e6:	a9 01       	movw	r20, r18
-    14e8:	45 5e       	subi	r20, 0xE5	; 229
-    14ea:	5f 4d       	sbci	r21, 0xDF	; 223
-    14ec:	7a 01       	movw	r14, r20
-    14ee:	01 96       	adiw	r24, 0x01	; 1
-    14f0:	6c 01       	movw	r12, r24
-    14f2:	cc 0c       	add	r12, r12
-    14f4:	dd 1c       	adc	r13, r13
-    14f6:	8c 0d       	add	r24, r12
-    14f8:	9d 1d       	adc	r25, r13
-    14fa:	88 0f       	add	r24, r24
-    14fc:	99 1f       	adc	r25, r25
-    14fe:	88 0f       	add	r24, r24
-    1500:	99 1f       	adc	r25, r25
-    1502:	fc 01       	movw	r30, r24
-    1504:	e5 5e       	subi	r30, 0xE5	; 229
-    1506:	ff 4d       	sbci	r31, 0xDF	; 223
- * \param data the data to write
+    14c0:	81 83       	std	Z+1, r24	; 0x01
+    14c2:	80 81       	ld	r24, Z
+    14c4:	be 01       	movw	r22, r28
+    14c6:	6f 5f       	subi	r22, 0xFF	; 255
+    14c8:	7f 4f       	sbci	r23, 0xFF	; 255
+    14ca:	80 ea       	ldi	r24, 0xA0	; 160
+ * \param command the command to write
  */
-static inline void st7565r_write_data(uint8_t data)
+static inline void st7565r_write_command(uint8_t command)
 {
 #if defined(ST7565R_USART_SPI_INTERFACE)
 	struct usart_spi_device device = {.id = ST7565R_CS_PIN};
-    1508:	6f 01       	movw	r12, r30
-    150a:	0f 2e       	mov	r0, r31
-    150c:	fb e2       	ldi	r31, 0x2B	; 43
-    150e:	6f 2e       	mov	r6, r31
+    14cc:	99 e0       	ldi	r25, 0x09	; 9
+    14ce:	97 d9       	rcall	.-3282   	; 0x7fe <usart_spi_deselect_device>
 	usart_spi_select_device(ST7565R_USART_SPI, &device);
-    1510:	f0 2d       	mov	r31, r0
-    1512:	00 ea       	ldi	r16, 0xA0	; 160
-    1514:	19 e0       	ldi	r17, 0x09	; 9
-    1516:	0f 2e       	mov	r0, r31
-    1518:	f0 e6       	ldi	r31, 0x60	; 96
-    151a:	af 2e       	mov	r10, r31
-    151c:	f6 e0       	ldi	r31, 0x06	; 6
-    151e:	bf 2e       	mov	r11, r31
-    1520:	f0 2d       	mov	r31, r0
-    1522:	99 24       	eor	r9, r9
+    14d0:	8b e2       	ldi	r24, 0x2B	; 43
+    14d2:	89 83       	std	Y+1, r24	; 0x01
+    14d4:	be 01       	movw	r22, r28
+    14d6:	6f 5f       	subi	r22, 0xFF	; 255
+    14d8:	7f 4f       	sbci	r23, 0xFF	; 255
+    14da:	80 ea       	ldi	r24, 0xA0	; 160
+    14dc:	99 e0       	ldi	r25, 0x09	; 9
+    14de:	79 d9       	rcall	.-3342   	; 0x7d2 <usart_spi_select_device>
+    14e0:	81 e0       	ldi	r24, 0x01	; 1
+    14e2:	80 93 66 06 	sts	0x0666, r24	; 0x800666 <__TEXT_REGION_LENGTH__+0x700666>
+ *
+ * \param usart The USART module.
+ */
+static inline bool usart_data_register_is_empty(USART_t * usart)
+{
+	return (usart)->STATUS & USART_DREIF_bm;
+    14e6:	e0 ea       	ldi	r30, 0xA0	; 160
+    14e8:	f9 e0       	ldi	r31, 0x09	; 9
+ * \return The received data
+ */
+static inline uint8_t usart_spi_transmit(USART_t * usart,
+		uint8_t txdata)
+{
+	while (usart_data_register_is_empty(usart) == false);
+    14ea:	81 81       	ldd	r24, Z+1	; 0x01
+    14ec:	85 ff       	sbrs	r24, 5
+ * \param usart The USART module.
+ * \param txdata The data to be transmitted.
+ */
+static inline void usart_put(USART_t * usart, uint8_t txdata)
+{
+	(usart)->DATA = txdata;
+    14ee:	fd cf       	rjmp	.-6      	; 0x14ea <displayCharacter+0x1da>
+    14f0:	80 e1       	ldi	r24, 0x10	; 16
+    14f2:	80 93 a0 09 	sts	0x09A0, r24	; 0x8009a0 <__TEXT_REGION_LENGTH__+0x7009a0>
+ *
+ * \param usart The USART module.
+ */
+static inline bool usart_tx_is_complete(USART_t * usart)
+{
+	return (usart)->STATUS & USART_TXCIF_bm;
+    14f6:	e0 ea       	ldi	r30, 0xA0	; 160
+    14f8:	f9 e0       	ldi	r31, 0x09	; 9
+static inline uint8_t usart_spi_transmit(USART_t * usart,
+		uint8_t txdata)
+{
+	while (usart_data_register_is_empty(usart) == false);
+	usart_put(usart, txdata);
+	while (!usart_tx_is_complete(usart));
+    14fa:	81 81       	ldd	r24, Z+1	; 0x01
  *
  * \param usart The USART module.
  */
 static inline void usart_clear_tx_complete(USART_t * usart)
 {
 	(usart)->STATUS = USART_TXCIF_bm;
-    1524:	93 94       	inc	r9
-    1526:	68 94       	set
-    1528:	77 24       	eor	r7, r7
-    152a:	76 f8       	bld	r7, 6
-    152c:	a5 cf       	rjmp	.-182    	; 0x1478 <displayCharacter+0x168>
-    152e:	0f 90       	pop	r0
-    1530:	df 91       	pop	r29
-    1532:	cf 91       	pop	r28
-    1534:	1f 91       	pop	r17
-    1536:	0f 91       	pop	r16
-    1538:	ff 90       	pop	r15
-    153a:	ef 90       	pop	r14
-    153c:	df 90       	pop	r13
-    153e:	cf 90       	pop	r12
-    1540:	bf 90       	pop	r11
-    1542:	af 90       	pop	r10
-    1544:	9f 90       	pop	r9
-    1546:	8f 90       	pop	r8
-    1548:	7f 90       	pop	r7
-    154a:	6f 90       	pop	r6
-    154c:	08 95       	ret
-
-0000154e <main>:
-uint8_t column_address;
-//! store the LCD controller start draw line
-uint8_t start_line_address = 0;
-
-int main(void)
+    14fc:	86 ff       	sbrs	r24, 6
+    14fe:	fd cf       	rjmp	.-6      	; 0x14fa <displayCharacter+0x1ea>
+    1500:	e0 ea       	ldi	r30, 0xA0	; 160
+    1502:	f9 e0       	ldi	r31, 0x09	; 9
+ *
+ * \return The received data
+ */
+static inline uint8_t usart_get(USART_t * usart)
 {
-    154e:	cf 93       	push	r28
-    1550:	df 93       	push	r29
-    1552:	cd b7       	in	r28, 0x3d	; 61
-    1554:	de b7       	in	r29, 0x3e	; 62
-    1556:	64 97       	sbiw	r28, 0x14	; 20
-    1558:	cd bf       	out	0x3d, r28	; 61
-	board_init();
-	sysclk_init();
-    155a:	de bf       	out	0x3e, r29	; 62
-    155c:	66 d9       	rcall	.-3380   	; 0x82a <board_init>
-    155e:	7a d8       	rcall	.-3852   	; 0x654 <sysclk_init>
-    1560:	80 e1       	ldi	r24, 0x10	; 16
-    1562:	80 93 85 06 	sts	0x0685, r24	; 0x800685 <__TEXT_REGION_LENGTH__+0x700685>
+	return (usart)->DATA;
+    1504:	80 e4       	ldi	r24, 0x40	; 64
+	ioport_set_pin_low(ST7565R_A0_PIN);
+	usart_spi_transmit(ST7565R_USART_SPI, command);
+	usart_spi_deselect_device(ST7565R_USART_SPI, &device);
+    1506:	81 83       	std	Z+1, r24	; 0x01
+    1508:	80 81       	ld	r24, Z
+    150a:	be 01       	movw	r22, r28
+    150c:	6f 5f       	subi	r22, 0xFF	; 255
+    150e:	7f 4f       	sbci	r23, 0xFF	; 255
+    1510:	80 ea       	ldi	r24, 0xA0	; 160
+ * \param command the command to write
+ */
+static inline void st7565r_write_command(uint8_t command)
+{
+#if defined(ST7565R_USART_SPI_INTERFACE)
+	struct usart_spi_device device = {.id = ST7565R_CS_PIN};
+    1512:	99 e0       	ldi	r25, 0x09	; 9
+    1514:	74 d9       	rcall	.-3352   	; 0x7fe <usart_spi_deselect_device>
+	usart_spi_select_device(ST7565R_USART_SPI, &device);
+    1516:	8b e2       	ldi	r24, 0x2B	; 43
+    1518:	89 83       	std	Y+1, r24	; 0x01
+    151a:	be 01       	movw	r22, r28
+    151c:	6f 5f       	subi	r22, 0xFF	; 255
+    151e:	7f 4f       	sbci	r23, 0xFF	; 255
+    1520:	80 ea       	ldi	r24, 0xA0	; 160
+    1522:	99 e0       	ldi	r25, 0x09	; 9
+    1524:	56 d9       	rcall	.-3412   	; 0x7d2 <usart_spi_select_device>
+    1526:	81 e0       	ldi	r24, 0x01	; 1
+    1528:	80 93 66 06 	sts	0x0666, r24	; 0x800666 <__TEXT_REGION_LENGTH__+0x700666>
+ *
+ * \param usart The USART module.
+ */
+static inline bool usart_data_register_is_empty(USART_t * usart)
+{
+	return (usart)->STATUS & USART_DREIF_bm;
+    152c:	e0 ea       	ldi	r30, 0xA0	; 160
+    152e:	f9 e0       	ldi	r31, 0x09	; 9
+ * \return The received data
+ */
+static inline uint8_t usart_spi_transmit(USART_t * usart,
+		uint8_t txdata)
+{
+	while (usart_data_register_is_empty(usart) == false);
+    1530:	81 81       	ldd	r24, Z+1	; 0x01
+    1532:	85 ff       	sbrs	r24, 5
+ * \param usart The USART module.
+ * \param txdata The data to be transmitted.
+ */
+static inline void usart_put(USART_t * usart, uint8_t txdata)
+{
+	(usart)->DATA = txdata;
+    1534:	fd cf       	rjmp	.-6      	; 0x1530 <displayCharacter+0x220>
+    1536:	10 92 a0 09 	sts	0x09A0, r1	; 0x8009a0 <__TEXT_REGION_LENGTH__+0x7009a0>
+ *
+ * \param usart The USART module.
+ */
+static inline bool usart_tx_is_complete(USART_t * usart)
+{
+	return (usart)->STATUS & USART_TXCIF_bm;
+    153a:	e0 ea       	ldi	r30, 0xA0	; 160
+static inline uint8_t usart_spi_transmit(USART_t * usart,
+		uint8_t txdata)
+{
+	while (usart_data_register_is_empty(usart) == false);
+	usart_put(usart, txdata);
+	while (!usart_tx_is_complete(usart));
+    153c:	f9 e0       	ldi	r31, 0x09	; 9
+    153e:	81 81       	ldd	r24, Z+1	; 0x01
+ *
+ * \param usart The USART module.
+ */
+static inline void usart_clear_tx_complete(USART_t * usart)
+{
+	(usart)->STATUS = USART_TXCIF_bm;
+    1540:	86 ff       	sbrs	r24, 6
+    1542:	fd cf       	rjmp	.-6      	; 0x153e <displayCharacter+0x22e>
+    1544:	e0 ea       	ldi	r30, 0xA0	; 160
+    1546:	f9 e0       	ldi	r31, 0x09	; 9
+ *
+ * \return The received data
+ */
+static inline uint8_t usart_get(USART_t * usart)
+{
+	return (usart)->DATA;
+    1548:	80 e4       	ldi	r24, 0x40	; 64
+	ioport_set_pin_low(ST7565R_A0_PIN);
+	usart_spi_transmit(ST7565R_USART_SPI, command);
+	usart_spi_deselect_device(ST7565R_USART_SPI, &device);
+    154a:	81 83       	std	Z+1, r24	; 0x01
+    154c:	80 81       	ld	r24, Z
+    154e:	be 01       	movw	r22, r28
+    1550:	6f 5f       	subi	r22, 0xFF	; 255
+    1552:	7f 4f       	sbci	r23, 0xFF	; 255
+    1554:	80 ea       	ldi	r24, 0xA0	; 160
+    1556:	99 e0       	ldi	r25, 0x09	; 9
+			st7565r_set_column_address(0);
+			st7565r_set_page_address(++page_address);
+    1558:	52 d9       	rcall	.-3420   	; 0x7fe <usart_spi_deselect_device>
+    155a:	80 91 da 21 	lds	r24, 0x21DA	; 0x8021da <page_address>
+    155e:	8f 5f       	subi	r24, 0xFF	; 255
  */
 static inline void st7565r_set_page_address(uint8_t address)
 {
 	// Make sure that the address is 4 bits (only 8 pages)
 	address &= 0x0F;
 	st7565r_write_command(ST7565R_CMD_PAGE_ADDRESS_SET(address));
-    1566:	0e 94 66 01 	call	0x2cc	; 0x2cc <st7565r_init>
+    1560:	80 93 da 21 	sts	0x21DA, r24	; 0x8021da <page_address>
+    1564:	8f 70       	andi	r24, 0x0F	; 15
+ * \param command the command to write
+ */
+static inline void st7565r_write_command(uint8_t command)
+{
+#if defined(ST7565R_USART_SPI_INTERFACE)
+	struct usart_spi_device device = {.id = ST7565R_CS_PIN};
+    1566:	18 2f       	mov	r17, r24
+    1568:	10 6b       	ori	r17, 0xB0	; 176
+	usart_spi_select_device(ST7565R_USART_SPI, &device);
+    156a:	8b e2       	ldi	r24, 0x2B	; 43
+    156c:	89 83       	std	Y+1, r24	; 0x01
+    156e:	be 01       	movw	r22, r28
+    1570:	6f 5f       	subi	r22, 0xFF	; 255
+    1572:	7f 4f       	sbci	r23, 0xFF	; 255
+    1574:	80 ea       	ldi	r24, 0xA0	; 160
+    1576:	99 e0       	ldi	r25, 0x09	; 9
+    1578:	2c d9       	rcall	.-3496   	; 0x7d2 <usart_spi_select_device>
+    157a:	81 e0       	ldi	r24, 0x01	; 1
+    157c:	80 93 66 06 	sts	0x0666, r24	; 0x800666 <__TEXT_REGION_LENGTH__+0x700666>
+ *
+ * \param usart The USART module.
+ */
+static inline bool usart_data_register_is_empty(USART_t * usart)
+{
+	return (usart)->STATUS & USART_DREIF_bm;
+    1580:	e0 ea       	ldi	r30, 0xA0	; 160
+    1582:	f9 e0       	ldi	r31, 0x09	; 9
+ * \return The received data
+ */
+static inline uint8_t usart_spi_transmit(USART_t * usart,
+		uint8_t txdata)
+{
+	while (usart_data_register_is_empty(usart) == false);
+    1584:	81 81       	ldd	r24, Z+1	; 0x01
+    1586:	85 ff       	sbrs	r24, 5
+ * \param usart The USART module.
+ * \param txdata The data to be transmitted.
+ */
+static inline void usart_put(USART_t * usart, uint8_t txdata)
+{
+	(usart)->DATA = txdata;
+    1588:	fd cf       	rjmp	.-6      	; 0x1584 <displayCharacter+0x274>
+ *
+ * \param usart The USART module.
+ */
+static inline bool usart_tx_is_complete(USART_t * usart)
+{
+	return (usart)->STATUS & USART_TXCIF_bm;
+    158a:	10 93 a0 09 	sts	0x09A0, r17	; 0x8009a0 <__TEXT_REGION_LENGTH__+0x7009a0>
+static inline uint8_t usart_spi_transmit(USART_t * usart,
+		uint8_t txdata)
+{
+	while (usart_data_register_is_empty(usart) == false);
+	usart_put(usart, txdata);
+	while (!usart_tx_is_complete(usart));
+    158e:	e0 ea       	ldi	r30, 0xA0	; 160
+    1590:	f9 e0       	ldi	r31, 0x09	; 9
+ *
+ * \param usart The USART module.
+ */
+static inline void usart_clear_tx_complete(USART_t * usart)
+{
+	(usart)->STATUS = USART_TXCIF_bm;
+    1592:	81 81       	ldd	r24, Z+1	; 0x01
+    1594:	86 ff       	sbrs	r24, 6
+    1596:	fd cf       	rjmp	.-6      	; 0x1592 <displayCharacter+0x282>
+    1598:	e0 ea       	ldi	r30, 0xA0	; 160
+ *
+ * \return The received data
+ */
+static inline uint8_t usart_get(USART_t * usart)
+{
+	return (usart)->DATA;
+    159a:	f9 e0       	ldi	r31, 0x09	; 9
+	ioport_set_pin_low(ST7565R_A0_PIN);
+	usart_spi_transmit(ST7565R_USART_SPI, command);
+	usart_spi_deselect_device(ST7565R_USART_SPI, &device);
+    159c:	80 e4       	ldi	r24, 0x40	; 64
+    159e:	81 83       	std	Z+1, r24	; 0x01
+    15a0:	80 81       	ld	r24, Z
+    15a2:	be 01       	movw	r22, r28
+    15a4:	6f 5f       	subi	r22, 0xFF	; 255
+    15a6:	7f 4f       	sbci	r23, 0xFF	; 255
+    15a8:	80 ea       	ldi	r24, 0xA0	; 160
+    15aa:	99 e0       	ldi	r25, 0x09	; 9
+    15ac:	28 d9       	rcall	.-3504   	; 0x7fe <usart_spi_deselect_device>
+    15ae:	51 c0       	rjmp	.+162    	; 0x1652 <displayCharacter+0x342>
+    15b0:	81 2f       	mov	r24, r17
+    15b2:	90 e0       	ldi	r25, 0x00	; 0
+    15b4:	7c 01       	movw	r14, r24
+    15b6:	ee 0c       	add	r14, r14
+    15b8:	ff 1c       	adc	r15, r15
+    15ba:	e8 0e       	add	r14, r24
+    15bc:	f9 1e       	adc	r15, r25
+    15be:	97 01       	movw	r18, r14
+    15c0:	22 0f       	add	r18, r18
+    15c2:	33 1f       	adc	r19, r19
+    15c4:	22 0f       	add	r18, r18
+    15c6:	33 1f       	adc	r19, r19
+    15c8:	a9 01       	movw	r20, r18
+    15ca:	45 5e       	subi	r20, 0xE5	; 229
+    15cc:	5f 4d       	sbci	r21, 0xDF	; 223
+    15ce:	7a 01       	movw	r14, r20
+    15d0:	01 96       	adiw	r24, 0x01	; 1
+    15d2:	6c 01       	movw	r12, r24
+    15d4:	cc 0c       	add	r12, r12
+    15d6:	dd 1c       	adc	r13, r13
+    15d8:	8c 0d       	add	r24, r12
+    15da:	9d 1d       	adc	r25, r13
+    15dc:	88 0f       	add	r24, r24
+    15de:	99 1f       	adc	r25, r25
+    15e0:	88 0f       	add	r24, r24
+    15e2:	99 1f       	adc	r25, r25
+    15e4:	fc 01       	movw	r30, r24
+    15e6:	e5 5e       	subi	r30, 0xE5	; 229
+ * \param data the data to write
+ */
+static inline void st7565r_write_data(uint8_t data)
+{
+#if defined(ST7565R_USART_SPI_INTERFACE)
+	struct usart_spi_device device = {.id = ST7565R_CS_PIN};
+    15e8:	ff 4d       	sbci	r31, 0xDF	; 223
+    15ea:	6f 01       	movw	r12, r30
+    15ec:	0f 2e       	mov	r0, r31
+    15ee:	fb e2       	ldi	r31, 0x2B	; 43
+	usart_spi_select_device(ST7565R_USART_SPI, &device);
+    15f0:	6f 2e       	mov	r6, r31
+    15f2:	f0 2d       	mov	r31, r0
+		bool level)
+{
+	PORT_t *base = arch_ioport_pin_to_base(pin);
+
+	if (level) {
+		base->OUTSET = arch_ioport_pin_to_mask(pin);
+    15f4:	00 ea       	ldi	r16, 0xA0	; 160
+    15f6:	19 e0       	ldi	r17, 0x09	; 9
+    15f8:	0f 2e       	mov	r0, r31
+    15fa:	f0 e6       	ldi	r31, 0x60	; 96
+    15fc:	af 2e       	mov	r10, r31
+    15fe:	f6 e0       	ldi	r31, 0x06	; 6
+    1600:	bf 2e       	mov	r11, r31
+ *
+ * \param usart The USART module.
+ */
+static inline void usart_clear_tx_complete(USART_t * usart)
+{
+	(usart)->STATUS = USART_TXCIF_bm;
+    1602:	f0 2d       	mov	r31, r0
+    1604:	99 24       	eor	r9, r9
+    1606:	93 94       	inc	r9
+			break;
+		}
+		st7565r_write_data(Characters[character][i]);
+    1608:	68 94       	set
+    160a:	77 24       	eor	r7, r7
+    160c:	76 f8       	bld	r7, 6
+    160e:	f7 01       	movw	r30, r14
+    1610:	80 80       	ld	r8, Z
+ * \param data the data to write
+ */
+static inline void st7565r_write_data(uint8_t data)
+{
+#if defined(ST7565R_USART_SPI_INTERFACE)
+	struct usart_spi_device device = {.id = ST7565R_CS_PIN};
+    1612:	f2 e0       	ldi	r31, 0x02	; 2
+	usart_spi_select_device(ST7565R_USART_SPI, &device);
+    1614:	ef 0e       	add	r14, r31
+    1616:	f1 1c       	adc	r15, r1
+    1618:	69 82       	std	Y+1, r6	; 0x01
+    161a:	be 01       	movw	r22, r28
+    161c:	6f 5f       	subi	r22, 0xFF	; 255
+    161e:	7f 4f       	sbci	r23, 0xFF	; 255
+    1620:	c8 01       	movw	r24, r16
+ *
+ * \param usart The USART module.
+ */
+static inline bool usart_data_register_is_empty(USART_t * usart)
+{
+	return (usart)->STATUS & USART_DREIF_bm;
+    1622:	d7 d8       	rcall	.-3666   	; 0x7d2 <usart_spi_select_device>
+ * \return The received data
+ */
+static inline uint8_t usart_spi_transmit(USART_t * usart,
+		uint8_t txdata)
+{
+	while (usart_data_register_is_empty(usart) == false);
+    1624:	f5 01       	movw	r30, r10
+    1626:	95 82       	std	Z+5, r9	; 0x05
+ * \param usart The USART module.
+ * \param txdata The data to be transmitted.
+ */
+static inline void usart_put(USART_t * usart, uint8_t txdata)
+{
+	(usart)->DATA = txdata;
+    1628:	f8 01       	movw	r30, r16
+ *
+ * \param usart The USART module.
+ */
+static inline bool usart_tx_is_complete(USART_t * usart)
+{
+	return (usart)->STATUS & USART_TXCIF_bm;
+    162a:	81 81       	ldd	r24, Z+1	; 0x01
+    162c:	85 ff       	sbrs	r24, 5
+static inline uint8_t usart_spi_transmit(USART_t * usart,
+		uint8_t txdata)
+{
+	while (usart_data_register_is_empty(usart) == false);
+	usart_put(usart, txdata);
+	while (!usart_tx_is_complete(usart));
+    162e:	fc cf       	rjmp	.-8      	; 0x1628 <displayCharacter+0x318>
+ *
+ * \param usart The USART module.
+ */
+static inline void usart_clear_tx_complete(USART_t * usart)
+{
+	(usart)->STATUS = USART_TXCIF_bm;
+    1630:	80 82       	st	Z, r8
+ *
+ * \return The received data
+ */
+static inline uint8_t usart_get(USART_t * usart)
+{
+	return (usart)->DATA;
+    1632:	f8 01       	movw	r30, r16
+	} else {
+		base->OUTCLR = arch_ioport_pin_to_mask(pin);
+    1634:	81 81       	ldd	r24, Z+1	; 0x01
+    1636:	86 ff       	sbrs	r24, 6
+	ioport_set_pin_high(ST7565R_A0_PIN);
+	usart_spi_transmit(ST7565R_USART_SPI, data);
+	ioport_set_pin_low(ST7565R_A0_PIN);
+	usart_spi_deselect_device(ST7565R_USART_SPI, &device);
+    1638:	fc cf       	rjmp	.-8      	; 0x1632 <displayCharacter+0x322>
+    163a:	71 82       	std	Z+1, r7	; 0x01
+    163c:	80 81       	ld	r24, Z
+    163e:	f5 01       	movw	r30, r10
+    1640:	96 82       	std	Z+6, r9	; 0x06
+    1642:	be 01       	movw	r22, r28
+		st7565r_set_column_address(0);
+		st7565r_set_page_address(++page_address);
+	}
+
+	int i;
+	for (i = 0; i < 6; i++)
+    1644:	6f 5f       	subi	r22, 0xFF	; 255
+    1646:	7f 4f       	sbci	r23, 0xFF	; 255
+    1648:	c8 01       	movw	r24, r16
+			st7565r_set_page_address(++page_address);
+			break;
+		}
+		st7565r_write_data(Characters[character][i]);
+	}
+	delay_ms(100);
+    164a:	d9 d8       	rcall	.-3662   	; 0x7fe <usart_spi_deselect_device>
+    164c:	ec 14       	cp	r14, r12
+    164e:	fd 04       	cpc	r15, r13
+    1650:	f1 f6       	brne	.-68     	; 0x160e <displayCharacter+0x2fe>
+    1652:	66 ed       	ldi	r22, 0xD6	; 214
+    1654:	78 e0       	ldi	r23, 0x08	; 8
+		bool level)
+{
+	PORT_t *base = arch_ioport_pin_to_base(pin);
+
+	if (level) {
+		base->OUTSET = arch_ioport_pin_to_mask(pin);
+    1656:	82 e0       	ldi	r24, 0x02	; 2
+    1658:	90 e0       	ldi	r25, 0x00	; 0
+    165a:	7f dd       	rcall	.-1282   	; 0x115a <__portable_avr_delay_cycles>
+	gpio_set_pin_high(NHD_C12832A1Z_BACKLIGHT); //turns backlight on
+    165c:	80 e1       	ldi	r24, 0x10	; 16
+	}
+
+	int i;
+	for (i = 0; i < 6; i++)
+	{
+		if (character == 100) {
+    165e:	80 93 85 06 	sts	0x0685, r24	; 0x800685 <__TEXT_REGION_LENGTH__+0x700685>
+    1662:	04 c0       	rjmp	.+8      	; 0x166c <displayCharacter+0x35c>
+    1664:	14 36       	cpi	r17, 0x64	; 100
+		}
+		st7565r_write_data(Characters[character][i]);
+	}
+	delay_ms(100);
+	gpio_set_pin_high(NHD_C12832A1Z_BACKLIGHT); //turns backlight on
+    1666:	09 f0       	breq	.+2      	; 0x166a <displayCharacter+0x35a>
+    1668:	a3 cf       	rjmp	.-186    	; 0x15b0 <displayCharacter+0x2a0>
+    166a:	06 cf       	rjmp	.-500    	; 0x1478 <displayCharacter+0x168>
+    166c:	0f 90       	pop	r0
+    166e:	df 91       	pop	r29
+    1670:	cf 91       	pop	r28
+    1672:	1f 91       	pop	r17
+    1674:	0f 91       	pop	r16
+    1676:	ff 90       	pop	r15
+    1678:	ef 90       	pop	r14
+    167a:	df 90       	pop	r13
+    167c:	cf 90       	pop	r12
+    167e:	bf 90       	pop	r11
+    1680:	af 90       	pop	r10
+    1682:	9f 90       	pop	r9
+    1684:	8f 90       	pop	r8
+    1686:	7f 90       	pop	r7
+    1688:	6f 90       	pop	r6
+    168a:	08 95       	ret
+
+0000168c <main>:
+uint8_t column_address;
+//! store the LCD controller start draw line
+uint8_t start_line_address = 0;
+
+int main(void)
+{
+    168c:	cf 93       	push	r28
+    168e:	df 93       	push	r29
+    1690:	cd b7       	in	r28, 0x3d	; 61
+    1692:	de b7       	in	r29, 0x3e	; 62
+    1694:	65 97       	sbiw	r28, 0x15	; 21
+    1696:	cd bf       	out	0x3d, r28	; 61
+	board_init();
+    1698:	de bf       	out	0x3e, r29	; 62
+	sysclk_init();
+    169a:	c7 d8       	rcall	.-3698   	; 0x82a <board_init>
+    169c:	0e 94 2a 03 	call	0x654	; 0x654 <sysclk_init>
+    16a0:	80 e1       	ldi	r24, 0x10	; 16
+    16a2:	80 93 85 06 	sts	0x0685, r24	; 0x800685 <__TEXT_REGION_LENGTH__+0x700685>
+
+	gpio_set_pin_high(NHD_C12832A1Z_BACKLIGHT); //turns backlight on
+
+	// initialize the interface (SPI), ST7565R LCD controller and LCD
+	st7565r_init();
+    16a6:	0e 94 66 01 	call	0x2cc	; 0x2cc <st7565r_init>
  */
 static inline void st7565r_set_column_address(uint8_t address)
 {
 	// Make sure the address is 7 bits
 	address &= 0x7F;
 	st7565r_write_command(ST7565R_CMD_COLUMN_ADDRESS_SET_MSB(address >> 4));
-    156a:	80 eb       	ldi	r24, 0xB0	; 176
+    16aa:	80 eb       	ldi	r24, 0xB0	; 176
 	st7565r_write_command(ST7565R_CMD_COLUMN_ADDRESS_SET_LSB(address & 0x0F));
-    156c:	01 de       	rcall	.-1022   	; 0x1170 <st7565r_write_command>
-    156e:	80 e1       	ldi	r24, 0x10	; 16
+    16ac:	61 dd       	rcall	.-1342   	; 0x1170 <st7565r_write_command>
+    16ae:	80 e1       	ldi	r24, 0x10	; 16
+    16b0:	5f dd       	rcall	.-1346   	; 0x1170 <st7565r_write_command>
 		.paritytype = USART_SERIAL_PARITY,
 		.stopbits = USART_SERIAL_STOP_BIT
 	};
 	
 	// Initialize usart driver in RS232 mode
 	usart_init_rs232(USART_SERIAL_EXAMPLE, &USART_SERIAL_OPTIONS);
-    1570:	ff dd       	rcall	.-1026   	; 0x1170 <st7565r_write_command>
-    1572:	80 e0       	ldi	r24, 0x00	; 0
-    1574:	fd dd       	rcall	.-1030   	; 0x1170 <st7565r_write_command>
-    1576:	60 e0       	ldi	r22, 0x00	; 0
-    1578:	70 e2       	ldi	r23, 0x20	; 32
+    16b2:	80 e0       	ldi	r24, 0x00	; 0
+    16b4:	5d dd       	rcall	.-1350   	; 0x1170 <st7565r_write_command>
+    16b6:	60 e0       	ldi	r22, 0x00	; 0
+    16b8:	70 e2       	ldi	r23, 0x20	; 32
+    16ba:	80 ea       	ldi	r24, 0xA0	; 160
 
 	uint8_t tx_buf[] = "\n\rEnter a message: ";
-    157a:	80 ea       	ldi	r24, 0xA0	; 160
-    157c:	98 e0       	ldi	r25, 0x08	; 8
-    157e:	c7 da       	rcall	.-2674   	; 0xb0e <usart_init_rs232>
-    1580:	84 e1       	ldi	r24, 0x14	; 20
-    1582:	e7 e0       	ldi	r30, 0x07	; 7
-    1584:	f0 e2       	ldi	r31, 0x20	; 32
-    1586:	de 01       	movw	r26, r28
-    1588:	11 96       	adiw	r26, 0x01	; 1
-    158a:	01 90       	ld	r0, Z+
-    158c:	0d 92       	st	X+, r0
-    158e:	8a 95       	dec	r24
-    1590:	e1 f7       	brne	.-8      	; 0x158a <main+0x3c>
-    1592:	8e 01       	movw	r16, r28
-    1594:	0f 5f       	subi	r16, 0xFF	; 255
-    1596:	1f 4f       	sbci	r17, 0xFF	; 255
+    16bc:	98 e0       	ldi	r25, 0x08	; 8
+    16be:	27 da       	rcall	.-2994   	; 0xb0e <usart_init_rs232>
+    16c0:	84 e1       	ldi	r24, 0x14	; 20
+    16c2:	e7 e0       	ldi	r30, 0x07	; 7
+    16c4:	f0 e2       	ldi	r31, 0x20	; 32
+    16c6:	de 01       	movw	r26, r28
+    16c8:	11 96       	adiw	r26, 0x01	; 1
+    16ca:	01 90       	ld	r0, Z+
+    16cc:	0d 92       	st	X+, r0
+    16ce:	8a 95       	dec	r24
+    16d0:	e1 f7       	brne	.-8      	; 0x16ca <main+0x3e>
+    16d2:	8e 01       	movw	r16, r28
+    16d4:	0f 5f       	subi	r16, 0xFF	; 255
+    16d6:	1f 4f       	sbci	r17, 0xFF	; 255
+    16d8:	7e 01       	movw	r14, r28
+    16da:	81 e8       	ldi	r24, 0x81	; 129
 	int tx_length = 128;
 	int i;
 	for (i = 0; i < tx_length; i++) {
 		usart_putchar(USART_SERIAL_EXAMPLE, tx_buf[i]);
-    1598:	7e 01       	movw	r14, r28
-    159a:	81 e8       	ldi	r24, 0x81	; 129
-    159c:	e8 0e       	add	r14, r24
-    159e:	f1 1c       	adc	r15, r1
-    15a0:	f8 01       	movw	r30, r16
+    16dc:	e8 0e       	add	r14, r24
+    16de:	f1 1c       	adc	r15, r1
+    16e0:	f8 01       	movw	r30, r16
+    16e2:	61 91       	ld	r22, Z+
+    16e4:	8f 01       	movw	r16, r30
+    16e6:	80 ea       	ldi	r24, 0xA0	; 160
 	usart_init_rs232(USART_SERIAL_EXAMPLE, &USART_SERIAL_OPTIONS);
 
 	uint8_t tx_buf[] = "\n\rEnter a message: ";
 	int tx_length = 128;
 	int i;
 	for (i = 0; i < tx_length; i++) {
-    15a2:	61 91       	ld	r22, Z+
+    16e8:	98 e0       	ldi	r25, 0x08	; 8
+    16ea:	f4 d8       	rcall	.-3608   	; 0x8d4 <usart_putchar>
+    16ec:	0e 15       	cp	r16, r14
 		usart_putchar(USART_SERIAL_EXAMPLE, tx_buf[i]);
+	}
+
+	 //clear display
+	for (page_address = 0; page_address <= 4; page_address++) {
+    16ee:	1f 05       	cpc	r17, r15
+    16f0:	b9 f7       	brne	.-18     	; 0x16e0 <main+0x54>
+    16f2:	10 92 da 21 	sts	0x21DA, r1	; 0x8021da <page_address>
+ * \param command the command to write
+ */
+static inline void st7565r_write_command(uint8_t command)
+{
+#if defined(ST7565R_USART_SPI_INTERFACE)
+	struct usart_spi_device device = {.id = ST7565R_CS_PIN};
+    16f6:	80 e0       	ldi	r24, 0x00	; 0
+    16f8:	0f 2e       	mov	r0, r31
+    16fa:	fb e2       	ldi	r31, 0x2B	; 43
+	usart_spi_select_device(ST7565R_USART_SPI, &device);
+    16fc:	8f 2e       	mov	r8, r31
+    16fe:	f0 2d       	mov	r31, r0
+	} else {
+		base->OUTCLR = arch_ioport_pin_to_mask(pin);
+    1700:	00 ea       	ldi	r16, 0xA0	; 160
+    1702:	19 e0       	ldi	r17, 0x09	; 9
+    1704:	0f 2e       	mov	r0, r31
+    1706:	f0 e6       	ldi	r31, 0x60	; 96
+    1708:	ef 2e       	mov	r14, r31
+    170a:	f6 e0       	ldi	r31, 0x06	; 6
+    170c:	ff 2e       	mov	r15, r31
+    170e:	f0 2d       	mov	r31, r0
+ *
+ * \param usart The USART module.
+ */
+static inline bool usart_data_register_is_empty(USART_t * usart)
+{
+	return (usart)->STATUS & USART_DREIF_bm;
+    1710:	aa 24       	eor	r10, r10
+    1712:	a3 94       	inc	r10
+ *
+ * \param usart The USART module.
+ */
+static inline void usart_clear_tx_complete(USART_t * usart)
+{
+	(usart)->STATUS = USART_TXCIF_bm;
+    1714:	b0 2e       	mov	r11, r16
+    1716:	c1 2e       	mov	r12, r17
+    1718:	68 94       	set
+ */
+static inline void st7565r_set_page_address(uint8_t address)
+{
+	// Make sure that the address is 4 bits (only 8 pages)
+	address &= 0x0F;
+	st7565r_write_command(ST7565R_CMD_PAGE_ADDRESS_SET(address));
+    171a:	99 24       	eor	r9, r9
+    171c:	96 f8       	bld	r9, 6
+ * \param command the command to write
+ */
+static inline void st7565r_write_command(uint8_t command)
+{
+#if defined(ST7565R_USART_SPI_INTERFACE)
+	struct usart_spi_device device = {.id = ST7565R_CS_PIN};
+    171e:	8f 70       	andi	r24, 0x0F	; 15
+	usart_spi_select_device(ST7565R_USART_SPI, &device);
+    1720:	80 6b       	ori	r24, 0xB0	; 176
+    1722:	d8 2e       	mov	r13, r24
+    1724:	8d 8a       	std	Y+21, r8	; 0x15
+    1726:	be 01       	movw	r22, r28
+    1728:	6b 5e       	subi	r22, 0xEB	; 235
+    172a:	7f 4f       	sbci	r23, 0xFF	; 255
+    172c:	c8 01       	movw	r24, r16
+    172e:	51 d8       	rcall	.-3934   	; 0x7d2 <usart_spi_select_device>
+ *
+ * \param usart The USART module.
+ */
+static inline bool usart_data_register_is_empty(USART_t * usart)
+{
+	return (usart)->STATUS & USART_DREIF_bm;
+    1730:	f7 01       	movw	r30, r14
+    1732:	a6 82       	std	Z+6, r10	; 0x06
+ * \return The received data
+ */
+static inline uint8_t usart_spi_transmit(USART_t * usart,
+		uint8_t txdata)
+{
+	while (usart_data_register_is_empty(usart) == false);
+    1734:	f8 01       	movw	r30, r16
+    1736:	81 81       	ldd	r24, Z+1	; 0x01
+ * \param usart The USART module.
+ * \param txdata The data to be transmitted.
+ */
+static inline void usart_put(USART_t * usart, uint8_t txdata)
+{
+	(usart)->DATA = txdata;
+    1738:	85 ff       	sbrs	r24, 5
+ *
+ * \param usart The USART module.
+ */
+static inline bool usart_tx_is_complete(USART_t * usart)
+{
+	return (usart)->STATUS & USART_TXCIF_bm;
+    173a:	fc cf       	rjmp	.-8      	; 0x1734 <main+0xa8>
+    173c:	d0 82       	st	Z, r13
+static inline uint8_t usart_spi_transmit(USART_t * usart,
+		uint8_t txdata)
+{
+	while (usart_data_register_is_empty(usart) == false);
+	usart_put(usart, txdata);
+	while (!usart_tx_is_complete(usart));
+    173e:	f8 01       	movw	r30, r16
+ *
+ * \param usart The USART module.
+ */
+static inline void usart_clear_tx_complete(USART_t * usart)
+{
+	(usart)->STATUS = USART_TXCIF_bm;
+    1740:	81 81       	ldd	r24, Z+1	; 0x01
+ *
+ * \return The received data
+ */
+static inline uint8_t usart_get(USART_t * usart)
+{
+	return (usart)->DATA;
+    1742:	86 ff       	sbrs	r24, 6
+	ioport_set_pin_low(ST7565R_A0_PIN);
+	usart_spi_transmit(ST7565R_USART_SPI, command);
+	usart_spi_deselect_device(ST7565R_USART_SPI, &device);
+    1744:	fc cf       	rjmp	.-8      	; 0x173e <main+0xb2>
+    1746:	91 82       	std	Z+1, r9	; 0x01
+    1748:	80 81       	ld	r24, Z
+    174a:	be 01       	movw	r22, r28
+    174c:	6b 5e       	subi	r22, 0xEB	; 235
+    174e:	7f 4f       	sbci	r23, 0xFF	; 255
+		st7565r_set_page_address(page_address);
+		for (column_address = 0; column_address < 128; column_address++) {
+    1750:	c8 01       	movw	r24, r16
+    1752:	55 d8       	rcall	.-3926   	; 0x7fe <usart_spi_deselect_device>
+    1754:	10 92 d9 21 	sts	0x21D9, r1	; 0x8021d9 <column_address>
+ */
+static inline void st7565r_set_column_address(uint8_t address)
+{
+	// Make sure the address is 7 bits
+	address &= 0x7F;
+	st7565r_write_command(ST7565R_CMD_COLUMN_ADDRESS_SET_MSB(address >> 4));
+    1758:	d1 2c       	mov	r13, r1
+    175a:	8d 2d       	mov	r24, r13
+    175c:	8f 77       	andi	r24, 0x7F	; 127
+    175e:	82 95       	swap	r24
+ * \param command the command to write
+ */
+static inline void st7565r_write_command(uint8_t command)
+{
+#if defined(ST7565R_USART_SPI_INTERFACE)
+	struct usart_spi_device device = {.id = ST7565R_CS_PIN};
+    1760:	8f 70       	andi	r24, 0x0F	; 15
+	usart_spi_select_device(ST7565R_USART_SPI, &device);
+    1762:	80 61       	ori	r24, 0x10	; 16
+    1764:	78 2e       	mov	r7, r24
+    1766:	8d 8a       	std	Y+21, r8	; 0x15
+    1768:	be 01       	movw	r22, r28
+    176a:	6b 5e       	subi	r22, 0xEB	; 235
+    176c:	7f 4f       	sbci	r23, 0xFF	; 255
+    176e:	8b 2d       	mov	r24, r11
+    1770:	9c 2d       	mov	r25, r12
+    1772:	2f d8       	rcall	.-4002   	; 0x7d2 <usart_spi_select_device>
+ *
+ * \param usart The USART module.
+ */
+static inline bool usart_data_register_is_empty(USART_t * usart)
+{
+	return (usart)->STATUS & USART_DREIF_bm;
+    1774:	f7 01       	movw	r30, r14
+    1776:	a6 82       	std	Z+6, r10	; 0x06
+ * \return The received data
+ */
+static inline uint8_t usart_spi_transmit(USART_t * usart,
+		uint8_t txdata)
+{
+	while (usart_data_register_is_empty(usart) == false);
+    1778:	f8 01       	movw	r30, r16
+    177a:	81 81       	ldd	r24, Z+1	; 0x01
+ * \param usart The USART module.
+ * \param txdata The data to be transmitted.
+ */
+static inline void usart_put(USART_t * usart, uint8_t txdata)
+{
+	(usart)->DATA = txdata;
+    177c:	85 ff       	sbrs	r24, 5
+ *
+ * \param usart The USART module.
+ */
+static inline bool usart_tx_is_complete(USART_t * usart)
+{
+	return (usart)->STATUS & USART_TXCIF_bm;
+    177e:	fc cf       	rjmp	.-8      	; 0x1778 <main+0xec>
+static inline uint8_t usart_spi_transmit(USART_t * usart,
+		uint8_t txdata)
+{
+	while (usart_data_register_is_empty(usart) == false);
+	usart_put(usart, txdata);
+	while (!usart_tx_is_complete(usart));
+    1780:	70 82       	st	Z, r7
+ *
+ * \param usart The USART module.
+ */
+static inline void usart_clear_tx_complete(USART_t * usart)
+{
+	(usart)->STATUS = USART_TXCIF_bm;
+    1782:	f8 01       	movw	r30, r16
+ *
+ * \return The received data
+ */
+static inline uint8_t usart_get(USART_t * usart)
+{
+	return (usart)->DATA;
+    1784:	81 81       	ldd	r24, Z+1	; 0x01
+	ioport_set_pin_low(ST7565R_A0_PIN);
+	usart_spi_transmit(ST7565R_USART_SPI, command);
+	usart_spi_deselect_device(ST7565R_USART_SPI, &device);
+    1786:	86 ff       	sbrs	r24, 6
+    1788:	fc cf       	rjmp	.-8      	; 0x1782 <main+0xf6>
+    178a:	91 82       	std	Z+1, r9	; 0x01
+    178c:	80 81       	ld	r24, Z
+    178e:	be 01       	movw	r22, r28
+    1790:	6b 5e       	subi	r22, 0xEB	; 235
+static inline void st7565r_set_column_address(uint8_t address)
+{
+	// Make sure the address is 7 bits
+	address &= 0x7F;
+	st7565r_write_command(ST7565R_CMD_COLUMN_ADDRESS_SET_MSB(address >> 4));
+	st7565r_write_command(ST7565R_CMD_COLUMN_ADDRESS_SET_LSB(address & 0x0F));
+    1792:	7f 4f       	sbci	r23, 0xFF	; 255
+    1794:	8b 2d       	mov	r24, r11
+    1796:	9c 2d       	mov	r25, r12
+ * \param command the command to write
+ */
+static inline void st7565r_write_command(uint8_t command)
+{
+#if defined(ST7565R_USART_SPI_INTERFACE)
+	struct usart_spi_device device = {.id = ST7565R_CS_PIN};
+    1798:	32 d8       	rcall	.-3996   	; 0x7fe <usart_spi_deselect_device>
+	usart_spi_select_device(ST7565R_USART_SPI, &device);
+    179a:	fd 2d       	mov	r31, r13
+    179c:	ff 70       	andi	r31, 0x0F	; 15
+    179e:	df 2e       	mov	r13, r31
+    17a0:	8d 8a       	std	Y+21, r8	; 0x15
+    17a2:	be 01       	movw	r22, r28
+    17a4:	6b 5e       	subi	r22, 0xEB	; 235
+    17a6:	7f 4f       	sbci	r23, 0xFF	; 255
+    17a8:	8b 2d       	mov	r24, r11
+    17aa:	9c 2d       	mov	r25, r12
+ *
+ * \param usart The USART module.
+ */
+static inline bool usart_data_register_is_empty(USART_t * usart)
+{
+	return (usart)->STATUS & USART_DREIF_bm;
+    17ac:	12 d8       	rcall	.-4060   	; 0x7d2 <usart_spi_select_device>
+    17ae:	f7 01       	movw	r30, r14
+ * \return The received data
+ */
+static inline uint8_t usart_spi_transmit(USART_t * usart,
+		uint8_t txdata)
+{
+	while (usart_data_register_is_empty(usart) == false);
+    17b0:	a6 82       	std	Z+6, r10	; 0x06
+    17b2:	f8 01       	movw	r30, r16
+ *
+ * \param usart The USART module.
+ */
+static inline bool usart_tx_is_complete(USART_t * usart)
+{
+	return (usart)->STATUS & USART_TXCIF_bm;
+    17b4:	81 81       	ldd	r24, Z+1	; 0x01
+static inline uint8_t usart_spi_transmit(USART_t * usart,
+		uint8_t txdata)
+{
+	while (usart_data_register_is_empty(usart) == false);
+	usart_put(usart, txdata);
+	while (!usart_tx_is_complete(usart));
+    17b6:	85 ff       	sbrs	r24, 5
+    17b8:	fc cf       	rjmp	.-8      	; 0x17b2 <main+0x126>
+ *
+ * \param usart The USART module.
+ */
+static inline void usart_clear_tx_complete(USART_t * usart)
+{
+	(usart)->STATUS = USART_TXCIF_bm;
+    17ba:	d0 82       	st	Z, r13
+ *
+ * \return The received data
+ */
+static inline uint8_t usart_get(USART_t * usart)
+{
+	return (usart)->DATA;
+    17bc:	f8 01       	movw	r30, r16
+	ioport_set_pin_low(ST7565R_A0_PIN);
+	usart_spi_transmit(ST7565R_USART_SPI, command);
+	usart_spi_deselect_device(ST7565R_USART_SPI, &device);
+    17be:	81 81       	ldd	r24, Z+1	; 0x01
+    17c0:	86 ff       	sbrs	r24, 6
+    17c2:	fc cf       	rjmp	.-8      	; 0x17bc <main+0x130>
+    17c4:	91 82       	std	Z+1, r9	; 0x01
+    17c6:	80 81       	ld	r24, Z
+    17c8:	be 01       	movw	r22, r28
+    17ca:	6b 5e       	subi	r22, 0xEB	; 235
+ * \param data the data to write
+ */
+static inline void st7565r_write_data(uint8_t data)
+{
+#if defined(ST7565R_USART_SPI_INTERFACE)
+	struct usart_spi_device device = {.id = ST7565R_CS_PIN};
+    17cc:	7f 4f       	sbci	r23, 0xFF	; 255
+	usart_spi_select_device(ST7565R_USART_SPI, &device);
+    17ce:	8b 2d       	mov	r24, r11
+    17d0:	9c 2d       	mov	r25, r12
+    17d2:	15 d8       	rcall	.-4054   	; 0x7fe <usart_spi_deselect_device>
+    17d4:	8d 8a       	std	Y+21, r8	; 0x15
+    17d6:	be 01       	movw	r22, r28
+    17d8:	6b 5e       	subi	r22, 0xEB	; 235
+    17da:	7f 4f       	sbci	r23, 0xFF	; 255
+		bool level)
+{
+	PORT_t *base = arch_ioport_pin_to_base(pin);
+
+	if (level) {
+		base->OUTSET = arch_ioport_pin_to_mask(pin);
+    17dc:	8b 2d       	mov	r24, r11
+    17de:	9c 2d       	mov	r25, r12
+ *
+ * \param usart The USART module.
+ */
+static inline bool usart_data_register_is_empty(USART_t * usart)
+{
+	return (usart)->STATUS & USART_DREIF_bm;
+    17e0:	0e 94 e9 03 	call	0x7d2	; 0x7d2 <usart_spi_select_device>
+ * \return The received data
+ */
+static inline uint8_t usart_spi_transmit(USART_t * usart,
+		uint8_t txdata)
+{
+	while (usart_data_register_is_empty(usart) == false);
+    17e4:	f7 01       	movw	r30, r14
+    17e6:	a5 82       	std	Z+5, r10	; 0x05
+ * \param usart The USART module.
+ * \param txdata The data to be transmitted.
+ */
+static inline void usart_put(USART_t * usart, uint8_t txdata)
+{
+	(usart)->DATA = txdata;
+    17e8:	f8 01       	movw	r30, r16
+ *
+ * \param usart The USART module.
+ */
+static inline bool usart_tx_is_complete(USART_t * usart)
+{
+	return (usart)->STATUS & USART_TXCIF_bm;
+    17ea:	81 81       	ldd	r24, Z+1	; 0x01
+    17ec:	85 ff       	sbrs	r24, 5
+static inline uint8_t usart_spi_transmit(USART_t * usart,
+		uint8_t txdata)
+{
+	while (usart_data_register_is_empty(usart) == false);
+	usart_put(usart, txdata);
+	while (!usart_tx_is_complete(usart));
+    17ee:	fc cf       	rjmp	.-8      	; 0x17e8 <main+0x15c>
+    17f0:	10 82       	st	Z, r1
+ *
+ * \param usart The USART module.
+ */
+static inline void usart_clear_tx_complete(USART_t * usart)
+{
+	(usart)->STATUS = USART_TXCIF_bm;
+    17f2:	f8 01       	movw	r30, r16
+ *
+ * \return The received data
+ */
+static inline uint8_t usart_get(USART_t * usart)
+{
+	return (usart)->DATA;
+    17f4:	81 81       	ldd	r24, Z+1	; 0x01
+	} else {
+		base->OUTCLR = arch_ioport_pin_to_mask(pin);
+    17f6:	86 ff       	sbrs	r24, 6
+    17f8:	fc cf       	rjmp	.-8      	; 0x17f2 <main+0x166>
+	ioport_set_pin_high(ST7565R_A0_PIN);
+	usart_spi_transmit(ST7565R_USART_SPI, data);
+	ioport_set_pin_low(ST7565R_A0_PIN);
+	usart_spi_deselect_device(ST7565R_USART_SPI, &device);
+    17fa:	91 82       	std	Z+1, r9	; 0x01
+    17fc:	80 81       	ld	r24, Z
+    17fe:	f7 01       	movw	r30, r14
+    1800:	a6 82       	std	Z+6, r10	; 0x06
+    1802:	be 01       	movw	r22, r28
+    1804:	6b 5e       	subi	r22, 0xEB	; 235
+    1806:	7f 4f       	sbci	r23, 0xFF	; 255
+    1808:	8b 2d       	mov	r24, r11
+    180a:	9c 2d       	mov	r25, r12
+    180c:	0e 94 ff 03 	call	0x7fe	; 0x7fe <usart_spi_deselect_device>
+    1810:	d0 90 d9 21 	lds	r13, 0x21D9	; 0x8021d9 <column_address>
+    1814:	d3 94       	inc	r13
+	for (i = 0; i < tx_length; i++) {
+		usart_putchar(USART_SERIAL_EXAMPLE, tx_buf[i]);
+	}
+
+	 //clear display
+	for (page_address = 0; page_address <= 4; page_address++) {
+    1816:	d0 92 d9 21 	sts	0x21D9, r13	; 0x8021d9 <column_address>
+    181a:	dd 20       	and	r13, r13
+    181c:	0c f0       	brlt	.+2      	; 0x1820 <main+0x194>
+    181e:	9d cf       	rjmp	.-198    	; 0x175a <main+0xce>
+    1820:	80 91 da 21 	lds	r24, 0x21DA	; 0x8021da <page_address>
+		}
 	}
 
 	uint8_t input;
 	while (true) {
 		input = usart_getchar(USART_SERIAL_EXAMPLE);
-    15a4:	8f 01       	movw	r16, r30
-    15a6:	80 ea       	ldi	r24, 0xA0	; 160
-    15a8:	98 e0       	ldi	r25, 0x08	; 8
-    15aa:	94 d9       	rcall	.-3288   	; 0x8d4 <usart_putchar>
+    1824:	8f 5f       	subi	r24, 0xFF	; 255
+    1826:	80 93 da 21 	sts	0x21DA, r24	; 0x8021da <page_address>
 		int userInput = getCharacter(input);
-    15ac:	0e 15       	cp	r16, r14
-    15ae:	1f 05       	cpc	r17, r15
-    15b0:	b9 f7       	brne	.-18     	; 0x15a0 <main+0x52>
+    182a:	85 30       	cpi	r24, 0x05	; 5
+    182c:	08 f4       	brcc	.+2      	; 0x1830 <main+0x1a4>
 		displayCharacter(userInput);
-    15b2:	80 ea       	ldi	r24, 0xA0	; 160
-    15b4:	98 e0       	ldi	r25, 0x08	; 8
-    15b6:	96 d9       	rcall	.-3284   	; 0x8e4 <usart_getchar>
-    15b8:	90 e0       	ldi	r25, 0x00	; 0
-    15ba:	08 de       	rcall	.-1008   	; 0x11cc <getCharacter>
-    15bc:	a9 de       	rcall	.-686    	; 0x1310 <displayCharacter>
-    15be:	f9 cf       	rjmp	.-14     	; 0x15b2 <main+0x64>
+    182e:	77 cf       	rjmp	.-274    	; 0x171e <main+0x92>
+    1830:	80 ea       	ldi	r24, 0xA0	; 160
+    1832:	98 e0       	ldi	r25, 0x08	; 8
+    1834:	57 d8       	rcall	.-3922   	; 0x8e4 <usart_getchar>
+    1836:	90 e0       	ldi	r25, 0x00	; 0
+    1838:	c9 dc       	rcall	.-1646   	; 0x11cc <getCharacter>
+    183a:	6a dd       	rcall	.-1324   	; 0x1310 <displayCharacter>
+    183c:	f9 cf       	rjmp	.-14     	; 0x1830 <main+0x1a4>
 
-000015c0 <__udivmodsi4>:
-    15c0:	a1 e2       	ldi	r26, 0x21	; 33
-    15c2:	1a 2e       	mov	r1, r26
-    15c4:	aa 1b       	sub	r26, r26
-    15c6:	bb 1b       	sub	r27, r27
-    15c8:	fd 01       	movw	r30, r26
-    15ca:	0d c0       	rjmp	.+26     	; 0x15e6 <__udivmodsi4_ep>
+0000183e <__udivmodsi4>:
+    183e:	a1 e2       	ldi	r26, 0x21	; 33
+    1840:	1a 2e       	mov	r1, r26
+    1842:	aa 1b       	sub	r26, r26
+    1844:	bb 1b       	sub	r27, r27
+    1846:	fd 01       	movw	r30, r26
+    1848:	0d c0       	rjmp	.+26     	; 0x1864 <__udivmodsi4_ep>
 
-000015cc <__udivmodsi4_loop>:
-    15cc:	aa 1f       	adc	r26, r26
-    15ce:	bb 1f       	adc	r27, r27
-    15d0:	ee 1f       	adc	r30, r30
-    15d2:	ff 1f       	adc	r31, r31
-    15d4:	a2 17       	cp	r26, r18
-    15d6:	b3 07       	cpc	r27, r19
-    15d8:	e4 07       	cpc	r30, r20
-    15da:	f5 07       	cpc	r31, r21
-    15dc:	20 f0       	brcs	.+8      	; 0x15e6 <__udivmodsi4_ep>
-    15de:	a2 1b       	sub	r26, r18
-    15e0:	b3 0b       	sbc	r27, r19
-    15e2:	e4 0b       	sbc	r30, r20
-    15e4:	f5 0b       	sbc	r31, r21
+0000184a <__udivmodsi4_loop>:
+    184a:	aa 1f       	adc	r26, r26
+    184c:	bb 1f       	adc	r27, r27
+    184e:	ee 1f       	adc	r30, r30
+    1850:	ff 1f       	adc	r31, r31
+    1852:	a2 17       	cp	r26, r18
+    1854:	b3 07       	cpc	r27, r19
+    1856:	e4 07       	cpc	r30, r20
+    1858:	f5 07       	cpc	r31, r21
+    185a:	20 f0       	brcs	.+8      	; 0x1864 <__udivmodsi4_ep>
+    185c:	a2 1b       	sub	r26, r18
+    185e:	b3 0b       	sbc	r27, r19
+    1860:	e4 0b       	sbc	r30, r20
+    1862:	f5 0b       	sbc	r31, r21
 
-000015e6 <__udivmodsi4_ep>:
-    15e6:	66 1f       	adc	r22, r22
-    15e8:	77 1f       	adc	r23, r23
-    15ea:	88 1f       	adc	r24, r24
-    15ec:	99 1f       	adc	r25, r25
-    15ee:	1a 94       	dec	r1
-    15f0:	69 f7       	brne	.-38     	; 0x15cc <__udivmodsi4_loop>
-    15f2:	60 95       	com	r22
-    15f4:	70 95       	com	r23
-    15f6:	80 95       	com	r24
-    15f8:	90 95       	com	r25
-    15fa:	9b 01       	movw	r18, r22
-    15fc:	ac 01       	movw	r20, r24
-    15fe:	bd 01       	movw	r22, r26
-    1600:	cf 01       	movw	r24, r30
-    1602:	08 95       	ret
+00001864 <__udivmodsi4_ep>:
+    1864:	66 1f       	adc	r22, r22
+    1866:	77 1f       	adc	r23, r23
+    1868:	88 1f       	adc	r24, r24
+    186a:	99 1f       	adc	r25, r25
+    186c:	1a 94       	dec	r1
+    186e:	69 f7       	brne	.-38     	; 0x184a <__udivmodsi4_loop>
+    1870:	60 95       	com	r22
+    1872:	70 95       	com	r23
+    1874:	80 95       	com	r24
+    1876:	90 95       	com	r25
+    1878:	9b 01       	movw	r18, r22
+    187a:	ac 01       	movw	r20, r24
+    187c:	bd 01       	movw	r22, r26
+    187e:	cf 01       	movw	r24, r30
+    1880:	08 95       	ret
 
-00001604 <__tablejump2__>:
-    1604:	ee 0f       	add	r30, r30
-    1606:	ff 1f       	adc	r31, r31
-    1608:	88 1f       	adc	r24, r24
-    160a:	8b bf       	out	0x3b, r24	; 59
-    160c:	07 90       	elpm	r0, Z+
-    160e:	f6 91       	elpm	r31, Z
-    1610:	e0 2d       	mov	r30, r0
-    1612:	19 94       	eijmp
+00001882 <__tablejump2__>:
+    1882:	ee 0f       	add	r30, r30
+    1884:	ff 1f       	adc	r31, r31
+    1886:	88 1f       	adc	r24, r24
+    1888:	8b bf       	out	0x3b, r24	; 59
+    188a:	07 90       	elpm	r0, Z+
+    188c:	f6 91       	elpm	r31, Z
+    188e:	e0 2d       	mov	r30, r0
+    1890:	19 94       	eijmp
 
-00001614 <_exit>:
-    1614:	f8 94       	cli
+00001892 <_exit>:
+    1892:	f8 94       	cli
 
-00001616 <__stop_program>:
-    1616:	ff cf       	rjmp	.-2      	; 0x1616 <__stop_program>
+00001894 <__stop_program>:
+    1894:	ff cf       	rjmp	.-2      	; 0x1894 <__stop_program>
