@@ -20,5 +20,5 @@ src\ASF\xmega\drivers\nvm\nvm_asm.s
 
 src\ASF\xmega\drivers\usart\usart.c
 
-src\st7565r_example.c
+src\Part3.c
 

@@ -5,8 +5,9 @@
 #include "led.h"
 
 int getCharacter(int input);
+void displayCharacter(uint8_t character);
 
-const int Characters[][] = {
+const int Characters[37][6] = {
 	0x7E, 0x09, 0x09, 0x09, 0x7E, 0x00,  //A
 	0x7F, 0x49, 0x49, 0x36, 0x00, 0x00,  //B
 	0x3E, 0x41, 0x41, 0x41, 0x00, 0x00,  //C
@@ -79,7 +80,7 @@ int main(void)
 	usart_init_rs232(USART_SERIAL_EXAMPLE, &USART_SERIAL_OPTIONS);
 
 	uint8_t tx_buf[] = "\n\rEnter a message: ";
-	int tx_length = 21;
+	int tx_length = 128;
 	int i;
 	for (i = 0; i < tx_length; i++) {
 		usart_putchar(USART_SERIAL_EXAMPLE, tx_buf[i]);
@@ -88,9 +89,152 @@ int main(void)
 	uint8_t input;
 	while (true) {
 		input = usart_getchar(USART_SERIAL_EXAMPLE);
+		int userInput = getCharacter(input);
+		displayCharacter(userInput);
 	}
 }
 
 int getCharacter(int input) {
-	//Do Stuff
+	if(input == 13)
+	return 100;
+	
+	if(input > 96 && input < 128){
+		input -= 32;
+	}
+	
+	if(input < 48 || (input > 57 && input < 65) || input > 90){
+		return 26;
+	}
+	
+	char character = (char)input;
+	
+	int x;
+	switch(character){
+		//int x;
+		case 'A':
+		x = 0;
+		break;
+		case 'B':
+		x = 1;
+		break;
+		case 'C':
+		x = 2;
+		break;
+		case 'D':
+		x = 3;
+		break;
+		case 'E':
+		x = 4;
+		break;
+		case 'F':
+		x = 5;
+		break;
+		case 'G':
+		x = 6;
+		break;
+		case 'H':
+		x = 7;
+		break;
+		case 'I':
+		x = 8;
+		break;
+		case 'J':
+		x = 9;
+		break;
+		case 'K':
+		x = 10;
+		break;
+		case 'L':
+		x = 11;
+		break;
+		case 'M':
+		x = 12;
+		break;
+		case 'N':
+		x = 13;
+		break;
+		case 'O':
+		x = 14;
+		break;
+		case 'P':
+		x = 15;
+		break;
+		case 'Q':
+		x = 16;
+		break;
+		case 'R':
+		x = 17;
+		break;
+		case 'S':
+		x = 18;
+		break;
+		case 'T':
+		x = 19;
+		break;
+		case 'U':
+		x = 20;
+		break;
+		case 'V':
+		x = 21;
+		break;
+		case 'W':
+		x = 22;
+		break;
+		case 'X':
+		x = 23;
+		break;
+		case 'Y':
+		x = 24;
+		break;
+		case 'Z':
+		x = 25;
+		break;
+		case ' ':
+		x = 26;
+		break;
+		case '1':
+		x = 27;
+		break;
+		case '2':
+		x = 28;
+		break;
+		case '3':
+		x = 29;
+		break;
+		case '4':
+		x = 30;
+		break;
+		case '5':
+		x = 31;
+		break;
+		case '6':
+		x = 32;
+		break;
+		case '7':
+		x = 33;
+		break;
+		case '8':
+		x = 34;
+		break;
+		case '9':
+		x = 35;
+		break;
+		case '0':
+		x = 36;
+		break;
+		default:
+		break;
+	}
+	return x;
+}
+
+void displayCharacter(uint8_t character)
+{
+	// set addresses at beginning of display
+
+	int i;
+	for (i = 0; i < 6; i++)
+	{
+		st7565r_write_data(Characters[character][i]);
+	}
 }

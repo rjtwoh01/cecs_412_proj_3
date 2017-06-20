@@ -78,7 +78,7 @@ C_SRCS +=  \
 ../src/ASF/xmega/boards/xmega_a3bu_xplained/init.c \
 ../src/ASF/xmega/drivers/nvm/nvm.c \
 ../src/ASF/xmega/drivers/usart/usart.c \
-../src/st7565r_example.c
+../src/Part3.c
 
 
 PREPROCESSING_SRCS +=  \
@@ -99,7 +99,7 @@ src/ASF/xmega/drivers/cpu/ccp.o \
 src/ASF/xmega/drivers/nvm/nvm.o \
 src/ASF/xmega/drivers/nvm/nvm_asm.o \
 src/ASF/xmega/drivers/usart/usart.o \
-src/st7565r_example.o
+src/Part3.o
 
 OBJS_AS_ARGS +=  \
 src/ASF/common/components/display/st7565r/st7565r.o \
@@ -111,7 +111,7 @@ src/ASF/xmega/drivers/cpu/ccp.o \
 src/ASF/xmega/drivers/nvm/nvm.o \
 src/ASF/xmega/drivers/nvm/nvm_asm.o \
 src/ASF/xmega/drivers/usart/usart.o \
-src/st7565r_example.o
+src/Part3.o
 
 C_DEPS +=  \
 src/ASF/common/components/display/st7565r/st7565r.d \
@@ -123,7 +123,7 @@ src/ASF/xmega/drivers/cpu/ccp.d \
 src/ASF/xmega/drivers/nvm/nvm.d \
 src/ASF/xmega/drivers/nvm/nvm_asm.d \
 src/ASF/xmega/drivers/usart/usart.d \
-src/st7565r_example.d
+src/Part3.d
 
 C_DEPS_AS_ARGS +=  \
 src/ASF/common/components/display/st7565r/st7565r.d \
@@ -135,11 +135,11 @@ src/ASF/xmega/drivers/cpu/ccp.d \
 src/ASF/xmega/drivers/nvm/nvm.d \
 src/ASF/xmega/drivers/nvm/nvm_asm.d \
 src/ASF/xmega/drivers/usart/usart.d \
-src/st7565r_example.d
+src/Part3.d
 
-OUTPUT_FILE_PATH +=Part2.elf
+OUTPUT_FILE_PATH +=Part3.elf
 
-OUTPUT_FILE_PATH_AS_ARGS +=Part2.elf
+OUTPUT_FILE_PATH_AS_ARGS +=Part3.elf
 
 ADDITIONAL_DEPENDENCIES:=
 
@@ -277,13 +277,13 @@ all: $(OUTPUT_FILE_PATH) $(ADDITIONAL_DEPENDENCIES)
 $(OUTPUT_FILE_PATH): $(OBJS) $(USER_OBJS) $(OUTPUT_FILE_DEP) $(LIB_DEP) $(LINKER_SCRIPT_DEP)
 	@echo Building target: $@
 	@echo Invoking: AVR/GNU Linker : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -Wl,-Map="Part2.map" -Wl,--start-group -Wl,-lm  -Wl,--end-group -Wl,--gc-sections -mmcu=atxmega256a3bu -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.1.68\gcc\dev\atxmega256a3bu" -Wl,--relax -Wl,--section-start=.BOOT=0x40000  
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -Wl,-Map="Part3.map" -Wl,--start-group -Wl,-lm  -Wl,--end-group -Wl,--gc-sections -mmcu=atxmega256a3bu -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\XMEGAA_DFP\1.1.68\gcc\dev\atxmega256a3bu" -Wl,--relax -Wl,--section-start=.BOOT=0x40000  
 	@echo Finished building target: $@
-	"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O ihex -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures  "Part2.elf" "Part2.hex"
-	"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -j .eeprom  --set-section-flags=.eeprom=alloc,load --change-section-lma .eeprom=0  --no-change-warnings -O ihex "Part2.elf" "Part2.eep" || exit 0
-	"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objdump.exe" -h -S "Part2.elf" > "Part2.lss"
-	"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O srec -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures "Part2.elf" "Part2.srec"
-	"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-size.exe" "Part2.elf"
+	"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O ihex -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures  "Part3.elf" "Part3.hex"
+	"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -j .eeprom  --set-section-flags=.eeprom=alloc,load --change-section-lma .eeprom=0  --no-change-warnings -O ihex "Part3.elf" "Part3.eep" || exit 0
+	"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objdump.exe" -h -S "Part3.elf" > "Part3.lss"
+	"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O srec -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures "Part3.elf" "Part3.srec"
+	"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-size.exe" "Part3.elf"
 	
 	
 
@@ -295,5 +295,5 @@ $(OUTPUT_FILE_PATH): $(OBJS) $(USER_OBJS) $(OUTPUT_FILE_DEP) $(LIB_DEP) $(LINKER
 clean:
 	-$(RM) $(OBJS_AS_ARGS) $(EXECUTABLES)  
 	-$(RM) $(C_DEPS_AS_ARGS)   
-	rm -rf "Part2.elf" "Part2.a" "Part2.hex" "Part2.lss" "Part2.eep" "Part2.map" "Part2.srec" "Part2.usersignatures"
+	rm -rf "Part3.elf" "Part3.a" "Part3.hex" "Part3.lss" "Part3.eep" "Part3.map" "Part3.srec" "Part3.usersignatures"
 	
