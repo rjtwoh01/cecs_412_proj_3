@@ -6,6 +6,7 @@
 
 int getCharacter(int input);
 void displayCharacter(uint8_t character);
+void resetScreen();
 
 const int Characters[37][6] = {
 	0x7E, 0x09, 0x09, 0x09, 0x7E, 0x00,  //A
@@ -66,10 +67,8 @@ int main(void)
 	st7565r_init();
 
 	// set addresses at beginning of display
-	st7565r_set_page_address(0);
-	st7565r_set_column_address(0);
-	ST7565R_RESET_PIN(A3);
-	
+	//resetScreen();
+
 	// USART options.
 	static usart_rs232_options_t USART_SERIAL_OPTIONS = {
 		.baudrate = USART_SERIAL_EXAMPLE_BAUDRATE,
@@ -247,7 +246,7 @@ int getCharacter(int input) {
 void displayCharacter(uint8_t character)
 {
 	// set addresses at beginning of display
-	gpio_set_pin_low(NHD_C12832A1Z_BACKLIGHT); //turns backlight on
+	gpio_set_pin_low(NHD_C12832A1Z_BACKLIGHT); //turns backlight off
 
 	if (character == 37) {
 		start_line_address += 7;
@@ -257,18 +256,24 @@ void displayCharacter(uint8_t character)
 	}
 
 	int i;
-	for (i = 0; i < 6; i++)
-	{
-		if (character == 100) {
-			//start_line_address += 7;
-			//st7565r_set_display_start_line_address(start_line_address++);
-			//st7565r_set_column_address(0);
-			//st7565r_set_page_address(++page_address);
-			ST7565R_RESET_PIN(A3);
-			break;
+	if (character == 100) {
+		resetScreen();
+	}
+	else {
+		for (i = 0; i < 6; i++)
+		{
+			st7565r_write_data(Characters[character][i]);
 		}
-		st7565r_write_data(Characters[character][i]);
 	}
 	delay_ms(100);
 	gpio_set_pin_high(NHD_C12832A1Z_BACKLIGHT); //turns backlight on
+}
+
+void resetScreen()
+{
+	//st7565r_hard_reset();
+	//st7565r_init();
+	st7565r_write_command(ST7565R_CMD_END);
+	st7565r_set_page_address(0);
+	st7565r_set_column_address(0);
 }
