@@ -68,6 +68,7 @@ int main(void)
 	// set addresses at beginning of display
 	st7565r_set_page_address(0);
 	st7565r_set_column_address(0);
+	ST7565R_RESET_PIN(A3);
 	
 	// USART options.
 	static usart_rs232_options_t USART_SERIAL_OPTIONS = {
@@ -259,10 +260,11 @@ void displayCharacter(uint8_t character)
 	for (i = 0; i < 6; i++)
 	{
 		if (character == 100) {
-			start_line_address += 7;
-			st7565r_set_display_start_line_address(start_line_address++);
-			st7565r_set_column_address(0);
-			st7565r_set_page_address(++page_address);
+			//start_line_address += 7;
+			//st7565r_set_display_start_line_address(start_line_address++);
+			//st7565r_set_column_address(0);
+			//st7565r_set_page_address(++page_address);
+			ST7565R_RESET_PIN(A3);
 			break;
 		}
 		st7565r_write_data(Characters[character][i]);
