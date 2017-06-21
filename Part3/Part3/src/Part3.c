@@ -67,7 +67,7 @@ int main(void)
 	st7565r_init();
 
 	// set addresses at beginning of display
-	//resetScreen();
+	resetScreen();
 
 	// USART options.
 	static usart_rs232_options_t USART_SERIAL_OPTIONS = {
@@ -271,9 +271,20 @@ void displayCharacter(uint8_t character)
 
 void resetScreen()
 {
-	//st7565r_hard_reset();
-	//st7565r_init();
-	st7565r_write_command(ST7565R_CMD_END);
+	int counter = 0;
+	// clear display
+	for (page_address = 0; page_address <= 4; page_address++) {
+		st7565r_set_page_address(page_address);
+		for (column_address = 0; column_address < 128; column_address++) {
+			st7565r_set_column_address(column_address);
+			/* fill every other pixel in the display. This will produce
+			horizontal lines on the display. */
+			st7565r_write_data(0x00);
+			if (counter >= 512)
+				break;
+		}
+	}
+
 	st7565r_set_page_address(0);
 	st7565r_set_column_address(0);
 }

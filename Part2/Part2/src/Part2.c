@@ -35,16 +35,22 @@ int main(void)
 	st7565r_set_page_address(0);
 	st7565r_set_column_address(0);
 
+	int counter = 0;
 	// clear display
-	//for (page_address = 0; page_address <= 4; page_address++) {
-		//st7565r_set_page_address(page_address);
-		//for (column_address = 0; column_address < 128; column_address++) {
-			//st7565r_set_column_address(column_address);
-			///* fill every other pixel in the display. This will produce
-			//horizontal lines on the display. */
-			//st7565r_write_data(0x00);
-		//}
-	//}
+	for (page_address = 0; page_address <= 4; page_address++) {
+		st7565r_set_page_address(page_address);
+		for (column_address = 0; column_address < 128; column_address++) {
+			st7565r_set_column_address(column_address);
+			/* fill every other pixel in the display. This will produce
+			horizontal lines on the display. */
+			st7565r_write_data(0x00);
+			if (counter >= 512)
+				break;
+		}
+	}
+
+	st7565r_set_page_address(0);
+	st7565r_set_column_address(0);
 	
 	//Write message
 	for (int i = 0; i < 8; i++) 

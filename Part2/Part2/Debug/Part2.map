@@ -891,7 +891,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0xe20
+.text           0x00000000      0xf50
  *(.vectors)
  .vectors       0x00000000      0x1fc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega256a3bu/avrxmega6/crtatxmega256a3bu.o
                 0x00000000                __vector_default
@@ -1117,16 +1117,16 @@ END GROUP
                 0x000008ac                usart_init_spi
  .text.st7565r_write_command
                 0x00000c74       0x5c src/Part2.o
- .text.main     0x00000cd0      0x108 src/Part2.o
+ .text.main     0x00000cd0      0x238 src/Part2.o
                 0x00000cd0                main
  .text.libgcc.div
-                0x00000dd8       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_udivmodsi4.o)
-                0x00000dd8                __udivmodsi4
-                0x00000e1c                . = ALIGN (0x2)
+                0x00000f08       0x44 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_udivmodsi4.o)
+                0x00000f08                __udivmodsi4
+                0x00000f4c                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000e1c        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_exit.o)
-                0x00000e1c                _exit
-                0x00000e1c                exit
+ .fini9         0x00000f4c        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_exit.o)
+                0x00000f4c                _exit
+                0x00000f4c                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -1145,11 +1145,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000e1c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_exit.o)
+ .fini0         0x00000f4c        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avrxmega6\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000e20                _etext = .
+                0x00000f50                _etext = .
 
-.data           0x00802000       0x60 load address 0x00000e20
+.data           0x00802000       0x60 load address 0x00000f50
                 0x00802000                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -1169,8 +1169,8 @@ END GROUP
  *(.bss*)
  *(COMMON)
                 [!provide]                PROVIDE (__bss_end, .)
-                0x00000e20                __data_load_start = LOADADDR (.data)
-                0x00000e80                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000f50                __data_load_start = LOADADDR (.data)
+                0x00000fb0                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00802060        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -1269,7 +1269,7 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0xa122
+.debug_info     0x00000000     0xa7c1
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000     0x3379 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega256a3bu/avrxmega6/crtatxmega256a3bu.o
  .debug_info    0x00003379     0x1945 src/ASF/common/components/display/st7565r/st7565r.o
@@ -1279,9 +1279,9 @@ END GROUP
  .debug_info    0x0000620a      0x71c src/ASF/xmega/boards/xmega_a3bu_xplained/init.o
  .debug_info    0x00006926       0x9f src/ASF/xmega/drivers/cpu/ccp.o
  .debug_info    0x000069c5     0x2ce5 src/ASF/xmega/drivers/usart/usart.o
- .debug_info    0x000096aa      0xa78 src/Part2.o
+ .debug_info    0x000096aa     0x1117 src/Part2.o
 
-.debug_abbrev   0x00000000     0x4166
+.debug_abbrev   0x00000000     0x4160
  *(.debug_abbrev)
  .debug_abbrev  0x00000000     0x30c4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega256a3bu/avrxmega6/crtatxmega256a3bu.o
  .debug_abbrev  0x000030c4      0x2a0 src/ASF/common/components/display/st7565r/st7565r.o
@@ -1291,9 +1291,9 @@ END GROUP
  .debug_abbrev  0x0000391f      0x14a src/ASF/xmega/boards/xmega_a3bu_xplained/init.o
  .debug_abbrev  0x00003a69       0x14 src/ASF/xmega/drivers/cpu/ccp.o
  .debug_abbrev  0x00003a7d      0x3f5 src/ASF/xmega/drivers/usart/usart.o
- .debug_abbrev  0x00003e72      0x2f4 src/Part2.o
+ .debug_abbrev  0x00003e72      0x2ee src/Part2.o
 
-.debug_line     0x00000000     0x3c58
+.debug_line     0x00000000     0x3dfb
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x39d C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega256a3bu/avrxmega6/crtatxmega256a3bu.o
  .debug_line    0x0000039d      0xac3 src/ASF/common/components/display/st7565r/st7565r.o
@@ -1303,7 +1303,7 @@ END GROUP
  .debug_line    0x0000219e      0x4df src/ASF/xmega/boards/xmega_a3bu_xplained/init.o
  .debug_line    0x0000267d       0x6e src/ASF/xmega/drivers/cpu/ccp.o
  .debug_line    0x000026eb      0xc9d src/ASF/xmega/drivers/usart/usart.o
- .debug_line    0x00003388      0x8d0 src/Part2.o
+ .debug_line    0x00003388      0xa73 src/Part2.o
 
 .debug_frame    0x00000000      0x3e8
  *(.debug_frame)
@@ -1315,7 +1315,7 @@ END GROUP
  .debug_frame   0x000001f0      0x14c src/ASF/xmega/drivers/usart/usart.o
  .debug_frame   0x0000033c       0xac src/Part2.o
 
-.debug_str      0x00000000    0x2ee4b
+.debug_str      0x00000000    0x2ee53
  *(.debug_str)
  .debug_str     0x00000000     0x21e4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/XMEGAA_DFP/1.1.68/gcc/dev/atxmega256a3bu/avrxmega6/crtatxmega256a3bu.o
  .debug_str     0x000021e4    0x2b719 src/ASF/common/components/display/st7565r/st7565r.o
@@ -1330,10 +1330,10 @@ END GROUP
                               0x2a5f4 (size before relaxing)
  .debug_str     0x0002dfc7      0xae3 src/ASF/xmega/drivers/usart/usart.o
                               0x2c073 (size before relaxing)
- .debug_str     0x0002eaaa      0x3a1 src/Part2.o
-                              0x2c022 (size before relaxing)
+ .debug_str     0x0002eaaa      0x3a9 src/Part2.o
+                              0x2c02a (size before relaxing)
 
-.debug_loc      0x00000000     0x24ab
+.debug_loc      0x00000000     0x28d5
  *(.debug_loc)
  .debug_loc     0x00000000      0x7c9 src/ASF/common/components/display/st7565r/st7565r.o
  .debug_loc     0x000007c9      0x329 src/ASF/common/services/clock/xmega/sysclk.o
@@ -1341,7 +1341,7 @@ END GROUP
  .debug_loc     0x00000b58      0x56c src/ASF/common/services/spi/xmega_usart_spi/usart_spi.o
  .debug_loc     0x000010c4      0x203 src/ASF/xmega/boards/xmega_a3bu_xplained/init.o
  .debug_loc     0x000012c7      0xe14 src/ASF/xmega/drivers/usart/usart.o
- .debug_loc     0x000020db      0x3d0 src/Part2.o
+ .debug_loc     0x000020db      0x7fa src/Part2.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -1361,7 +1361,7 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x210
+.debug_ranges   0x00000000      0x288
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x18 src/ASF/common/components/display/st7565r/st7565r.o
  .debug_ranges  0x00000018       0x30 src/ASF/common/services/clock/xmega/sysclk.o
@@ -1369,7 +1369,7 @@ END GROUP
  .debug_ranges  0x00000058       0x98 src/ASF/common/services/spi/xmega_usart_spi/usart_spi.o
  .debug_ranges  0x000000f0       0x10 src/ASF/xmega/boards/xmega_a3bu_xplained/init.o
  .debug_ranges  0x00000100       0x80 src/ASF/xmega/drivers/usart/usart.o
- .debug_ranges  0x00000180       0x90 src/Part2.o
+ .debug_ranges  0x00000180      0x108 src/Part2.o
 
 .debug_macro    0x00000000     0xab61
  *(.debug_macro)
