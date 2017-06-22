@@ -3,6 +3,8 @@
 #include <st7565r.h>
 #include "led.h"
 
+void resetScreen();
+
 const int Message[8][6] = {
 	0x3E, 0x41, 0x41, 0x41, 0x00, 0x00, //C
 	0x7F, 0x49, 0x49, 0x49, 0x00, 0x00, //E
@@ -14,15 +16,15 @@ const int Message[8][6] = {
 	0x62, 0x51, 0x4D, 0x46, 0x00, 0x00, //2
 };
 
+//! the page address to write to
+uint8_t page_address;
+//! the column address, or the X pixel.
+uint8_t column_address;
+//! store the LCD controller start draw line
+uint8_t start_line_address = 0;
+
 int main(void)
 {
-	//! the page address to write to
-	uint8_t page_address;
-	//! the column address, or the X pixel.
-	uint8_t column_address;
-	//! store the LCD controller start draw line
-	uint8_t start_line_address = 0;
-
 	board_init();
 	sysclk_init();
 
@@ -35,6 +37,20 @@ int main(void)
 	st7565r_set_page_address(0);
 	st7565r_set_column_address(0);
 
+	resetScreen();
+	
+	//Write message
+	for (int i = 0; i < 8; i++) 
+	{
+		for (int k = 0; k < 6; k++)
+		{
+			st7565r_write_data(Message[i][k]);
+		}
+	}
+}
+
+void resetScreen()
+{
 	int counter = 0;
 	// clear display
 	for (page_address = 0; page_address <= 4; page_address++) {
@@ -51,13 +67,4 @@ int main(void)
 
 	st7565r_set_page_address(0);
 	st7565r_set_column_address(0);
-	
-	//Write message
-	for (int i = 0; i < 8; i++) 
-	{
-		for (int k = 0; k < 6; k++)
-		{
-			st7565r_write_data(Message[i][k]);
-		}
-	}
 }
