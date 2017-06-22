@@ -87,17 +87,6 @@ int main(void)
 		usart_putchar(USART_SERIAL_EXAMPLE, tx_buf[i]);
 	}
 
-	 //clear display
-	//for (page_address = 0; page_address <= 4; page_address++) {
-		//st7565r_set_page_address(page_address);
-		//for (column_address = 0; column_address < 128; column_address++) {
-			//st7565r_set_column_address(column_address);
-			///* fill every other pixel in the display. This will produce
-			//horizontal lines on the display. */
-			//st7565r_write_data(0x00);
-		//}
-	//}
-
 	uint8_t input;
 	while (true) {
 		input = usart_getchar(USART_SERIAL_EXAMPLE);
